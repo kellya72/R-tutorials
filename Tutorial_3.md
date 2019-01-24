@@ -28,7 +28,7 @@ Alternatively, you can install and load packages in RStudio as follows:
 -   The following pop-up will appear:
 
 <center>
-<img src="Install packages.png" >
+<img src="Install packages.PNG" >
 </center>
 -   Enter the name of the package you wish to install in the packages box and select **install**.
 
