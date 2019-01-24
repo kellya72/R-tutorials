@@ -42,7 +42,9 @@ Basic Operators in R
 --------------------
 
 -   Open up a new R script in RStudio by selecting **File &gt; New File &gt; R Script**.
+
 -   The R script is where you will write and edit all your code.
+
 -   Start off by entering the following basic calculations and running each line of code.
 
 `6+3`
@@ -59,6 +61,7 @@ Variable assignment
 -------------------
 
 -   When coding in R it is often useful to name an object.
+
 -   The following code assigns the number `3` the name `myNumber`. If you want to access this number again at any point you can by simply typing `myNumber`.
 
 ``` r
@@ -66,6 +69,7 @@ myNumber <- 3
 ```
 
 -   The `<-` symbol is similar to an equals sign in R.
+
 -   When naming an object you can not have spaces between words i.e. above we have named our variable `myNumber` as typing `my number` would have resulted in an error. Another alternative would have been to use an underscore in the name (`my_number`).
 
 -   Try running the following code:
@@ -80,8 +84,11 @@ Vectors
 -------
 
 -   A vector is a sequence of data elements of the same basic type, for example a list of numbers or a list of names.
+
 -   Members in a vector can also be referred to as components.
+
 -   A vector of variables (or components) is written using the form `c(var1, var2, var3)` in R.
+
 -   Try running the following code in R:
 
 ``` r
@@ -90,7 +97,9 @@ stringVector <- c("cat", "dog", "rabbit", "fish")
 ```
 
 -   In programming the word **string** refers to a sequence of characters i.e. a word or sentence.
+
 -   Note that when making a vector of string variables it is necessary to put each variable in a set of speech marks.
+
 -   It is possible to select values from a vector by using the index of each variable. The third value in a vector would have an index of 3 for example.
 
 ``` r
@@ -119,6 +128,7 @@ Basic Functions
 ---------------
 
 -   R allows you to easily find the mean (average) of a group of numbers and their standard deviation (how much the numbers deviate from the mean on average) using the `mean()` and `sd()` functions.
+
 -   Try running the following code:
 
 `mean(numberVector)`
@@ -126,7 +136,9 @@ Basic Functions
 `sd(numberVector)`
 
 -   Repeat the above exercise but this time use the `stringVector` as the input to the functions. What happens?
+
 -   Other useful functions include the `median()`, `length()` and `sum()` functions.
+
 -   Try running the code below. What does each function do?
 
 `median(numberVector)`
@@ -139,6 +151,9 @@ Working Directories
 -------------------
 
 -   Create a new file on your desktop and name it **R Tutorials**.
+
 -   This is where you will save all your work from this course.
+
 -   Now you will set the working directory to this file in RStudio by selecting **Session &gt; Set Working Directory &gt; Choose Directory...** and then selecting the **R Tutorials** file.
+
 -   Later on in the course when you are reading in datasets to R you will see the benefits of using a working directory. For now just get in the habit of setting the working directory to the **R Tutorials** file at the start of each session.
