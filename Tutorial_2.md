@@ -9,14 +9,18 @@ The Help Function
 -----------------
 
 -   The help function is a very useful tool in R.
+
 -   Adding a `?` before any function will load a help file on that function which details what it does, the parameters it takes and provides examples of its use.
+
 -   Run `?mean` and examine the help file shown.
 
 Matrices in R
 -------------
 
 -   A matrix is a two dimensional array of data.
+
 -   A matrix is created in R using the `matrix` function which takes the format `matrix(data, nrow, ncol, byrow= FALSE)` where `data` is the input to the matrix, `nrow` is the number of rows in the matrix and `ncol` is the number of columns. By default the matrix is filled by column, however this can be changed to by row by setting the `byrow` parameter equal to `TRUE`.
+
 -   Below is an example of how to create a basic matrix with the resulting matrix shown underneath:
 
 ``` r
@@ -41,6 +45,7 @@ Naming Rows and Columns
 -----------------------
 
 -   It is possible to name the rows and columns in a matrix using the `rownames()` and `colnames()` functions.
+
 -   Firstly, name the columns in `testScores` by typing the following code:
 
 ``` r
@@ -53,7 +58,9 @@ Selecting values in a Matrix
 ----------------------------
 
 -   Similar to vectors, variables in a matrix are selected using indices. However this time to get a specific variable you must input two indices; the row index and the column index.
+
 -   To select the value in the first row and third column of a matrix you would use the following format: `matrixName[1,3]`. Note that the row index is specified first and then column index second, after a comma.
+
 -   Some examples of selecting values from matrices are shown below. Do you understand the output returned by each line of code?
 
 ``` r
@@ -86,6 +93,7 @@ Selecting Values using Row and Column Names
 -------------------------------------------
 
 -   One useful element of naming rows and columns is that they can be used to select variables in the matrix. This is especially useful when trying to access data in a large matrix.
+
 -   Try running the code below yourself, checking that you get the same answers.
 
 ``` r
@@ -112,6 +120,7 @@ Rbind and Cbind
 ---------------
 
 -   The `rbind` and `cbind` functions allow you to add rows and columns to an existing matrix respectively.
+
 -   For example, if we wanted to add test scores from April to the existing `testScores` matrix we would do so as follows:
 
 ``` r
@@ -134,7 +143,9 @@ The Apply Function
 ------------------
 
 -   The `apply()` function returns the result obtained when a set function is applied to a matrix.
+
 -   The function takes the following format: `apply(X, MARGIN, FUN)` where `X` is the matrix and `FUN` is the chosen function. The `MARGIN` parameter refers to whether you wish to apply the function to the rows or columns of the matrix. `MARGIN` is set to `1` for rows and `2` for columns.
+
 -   For example, if you wanted to find the average test score for each month you would do the following:
 
 ``` r
@@ -150,7 +161,9 @@ Editing Data in Matrix
 ----------------------
 
 -   It is very easy to access and edit data in a matrix.
+
 -   For example, from looking at the average test score values by month in `testScores`, it was thought that the January test must have been too hard. As a result, it was decided that each student would get 5 extra marks for their January test.
+
 -   The code below shows how to make the necessary charges to the matrix.
 
 ``` r
