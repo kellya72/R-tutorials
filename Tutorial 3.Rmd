@@ -31,13 +31,17 @@ Alternatively, you can install and load packages in RStudio as follows:
 
 - The following pop-up will appear:
 
-<center><img src="Install packages.PNG" ></center> 
+```{r, echo=FALSE,fig.align = 'center', out.width = '50%'}
+knitr::include_graphics("Install packages.PNG")
+```
 
 - Enter the name of the package you wish to install in the packages box and select **install**. 
 
 - Once the package is installed, you can load it by ticking the box beside the package name as shown below: 
 
-<center><img src="load package.png" ></center> 
+```{r, echo=FALSE,fig.align = 'center', out.width = '75%'}
+knitr::include_graphics("load package.png")
+```
 
 ```{r, echo=FALSE}
 library(ggplot2)
@@ -204,8 +208,9 @@ ggplot(diamonds, aes(price, fill = color)) +
 
 - Boxplots take the following format:
 
-<center><img src="box-plot-explained.gif" ></center>
-
+```{r, echo=FALSE,fig.align = 'center'}
+knitr::include_graphics("box-plot-explained.gif")
+```
 
 *Image sourced from www.flowingdata.com*
 

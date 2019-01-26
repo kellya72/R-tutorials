@@ -27,16 +27,14 @@ RStudio Layout
 
 The RStudio interface is layed out as follows:
 
-<center>
-<img src="rstudio_layout.png" width=75%>
-</center>
+<img src="rstudio_layout.png" width="75%" style="display: block; margin: auto;" />
+
 How to Run Code
 ---------------
 
-<center>
-<img src="run_line.png" width=75%>
-</center>
--   Alternatively those using Windows can run code chunks by highlighting the block of text and using the Ctrl+Enter keyboard shortcut.
+<img src="run_line.png" width="75%" style="display: block; margin: auto;" />
+
+-   Alternatively those using Windows can run code chunks by highlighting the block of text and using the Ctrl+Enter keyboard shortcut. On a Mac it's Cmd+Enter.
 
 Basic Operators in R
 --------------------
