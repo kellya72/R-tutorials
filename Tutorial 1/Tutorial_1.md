@@ -27,12 +27,12 @@ RStudio Layout
 
 The RStudio interface is layed out as follows:
 
-<img src="rstudio_layout.png" width="75%" style="display: block; margin: auto;" />
+<img src="images/rstudio_layout.png" width="75%" style="display: block; margin: auto;" />
 
 How to Run Code
 ---------------
 
-<img src="run_line.png" width="75%" style="display: block; margin: auto;" />
+<img src="images/run_line.png" width="75%" style="display: block; margin: auto;" />
 
 -   Alternatively those using Windows can run code chunks by highlighting the block of text and using the Ctrl+Enter keyboard shortcut. On a Mac it's Cmd+Enter.
 
