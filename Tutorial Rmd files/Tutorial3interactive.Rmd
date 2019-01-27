@@ -1,0 +1,288 @@
+---
+title: "Tutorial 3: Data Visualisation"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Introduction
+This tutorial will give an introduction on how to use R to produce graphs such as scatterplots, bar charts, histograms and boxplots. The use of graphics can help with the interpretation of large datasets and enhance reports.
+
+We will use the ggplot package, which is a member of the tidyverse package, to produce plots of our data.
+
+### Installing and Loading Packages
+- When creating plots in RStudio you need to load the tidyverse package.
+
+- The package first needs to be installed by running the following line of code:
+
+
+`install.packages("tidyverse")`
+
+
+- You then need to load the package by typing the following:
+
+
+`library(tidyverse)`
+
+- **Note:** you only need to install a package once, however, you need to load it every time you start a new session and want to use that package. 
+
+Alternatively, you can install and load packages in RStudio as follows:
+
+- In the bottom right hand corner of the RStudio, select the **Packages** tab.
+
+- Then click **Install** from the top left of the **Packages** window. 
+
+- The following pop-up will appear:
+
+
+```{r, echo=FALSE,fig.align = 'center', out.width = '50%'}
+knitr::include_graphics("images/Install packages.png")
+```
+
+- Enter the name of the package you wish to install in the packages box and select **install**. 
+
+- Once the package is installed, you can load it by ticking the box beside the package name as shown below: 
+
+```{r, echo=FALSE,fig.align = 'center', out.width = '75%'}
+knitr::include_graphics("images/Load package.png")
+```
+
+
+```{r, echo=FALSE}
+library(ggplot2)
+```
+
+
+### The Dataset
+- R already has datasets available that we can graph.
+
+- For this lesson we will use the `mpg` dataset from the tidyverse package. 
+
+- It contains observations collected by the US Environmental Protection Agency on  different car models.
+
+- Before we start to graph this dataset it is important to take a look at its contents.
+
+- Running `mpg` will return the following:
+
+```{r}
+mpg
+```
+
+- The top line of the dataset shows the variable names with the following rows representing each individual observation. 
+
+- Load the help file for the dataset (`?mpg`) to find more information on the data, including a description of the variables.
+
+## Scatterplots
+- We will start by producing a basic scatterplot of the `disp` (engine displacement in litres) and `cty` (city miles per gallon) variables. 
+
+```{r firstScatterplot, exercise= TRUE, exercise.eval= TRUE}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = cty))
+```
+
+
+**Exercise 1: Produce a scatterplot with `displ` on the x-axis and `hwy` (highway miles per gallon) on the y-axis.**
+
+
+```{r ex1, exercise=TRUE}
+
+```
+
+```{r ex1-solution}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+### Graphing Template
+
+`ggplot(data = <DATA>) + 
+  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))`
+  
+- The ggplot2 template takes the above form.
+
+- The data (`<DATA>`) is passed as part of the ggplot function.
+
+- The type of graph is defined by the function which follows (`<GEOM_FUNCTION>`). 
+    - We have seen previously the `geom_point` function which creates a scatterplot.
+    
+    - There are different functions which create other type of graphs such as a bar chart `geom_bar`. 
+    
+- The `<MAPPINGS>` component defines which variables are plotted and can control other parts of the graph like the colour, size, etc...
+
+### Scatterplots with Colour
+- You can also produce scatterplots that are coloured.
+
+- In the scatterplot below we have now coloured the data points using the `drv` variable. This means that data points will be coloured based on whether the car is a front-wheel drive, rear-wheel drive or four-wheel drive.
+
+```{r colourScatter, exercise= TRUE, exercise.eval= TRUE}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = cty, colour = drv))
+```
+
+**Exercise 2: Colour the scatterplot created in Exercise 1 using the `class` variable.**
+
+```{r ex2, exercise=TRUE, exercise.eval= TRUE}
+
+```
+```{r ex2-solution}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = cty, colour = class))
+```
+
+
+### Other Scatterplot Effects
+- It is also possible to use variables to alter the shade and shape of scatterplots.
+
+- Below are some examples of this.
+
+```{r shade, message=FALSE, warning=FALSE, exercise= TRUE, exercise.eval= TRUE}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = cty, alpha = drv))
+```
+
+
+```{r shape, exercise= TRUE, exercise.eval= TRUE}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = cty, shape = drv))
+```
+
+- These are examples of just some of the changes you can make to scatterplots. Exploring the help file for `geom_point` will help you find out more about the function.
+
+### Other Plots
+
+
+
+#### Different geom Types
+
+
+
+- `geom_point` = scatterplot
+
+- `geom_bar` = barplot
+
+- `geom_histogram` = histogram  
+
+- `geom_box` = boxplot
+
+
+- See RStudio's [cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf) for more information on different graph types and many other helpful tips.
+
+## Barplots
+
+### Diamonds data
+
+- `Diamonds` is a dataset containing the prices and other attributes of almost 54,000 diamonds.
+
+```{r diamonds, exercise= TRUE}
+diamonds
+```
+
+- Consult the help file for an exaplanation of the variables contained in the dataset.
+
+
+### Basic Barplot
+
+
+```{r basicBarplot, exercise= TRUE, exercise.eval= TRUE}
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = color))
+```
+
+**Exercise 3: Create a barplot of the `cut` variable.**
+
+```{r ex3, exercise= TRUE}
+
+
+```
+```{r ex3-solution}
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut))
+```
+
+### Barplots with Colour
+
+- You can colour a barplot depending on the variable being plotted as shown below:
+
+```{r barplotColour, exercise= TRUE, exercise.eval= TRUE}
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = color, fill = color))
+```
+
+- Alternatively, you can colour the barplot using another variable:
+
+```{r barplotVarColour, exercise= TRUE, exercise.eval= TRUE}
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = color, fill = cut))
+```
+
+- Another interesting barplot iteration:
+
+```{r otherBarplot, exercise= TRUE, exercise.eval= TRUE}
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = color, fill = cut), position = "dodge")
+```
+
+## Histograms
+### Basic Histogram
+
+
+```{r basicHistogram, exercise= TRUE, exercise.eval= TRUE}
+ggplot(diamonds, aes(price)) +
+  geom_histogram(binwidth = 250)
+```
+
+**Exercise 4: Create a histogram of price but this time set the `binwidth` parameter to 1000. What effect does this have on the resulting plot?**
+
+```{r ex4, exercise= TRUE}
+
+
+```
+
+```{r ex4-solution}
+ggplot(diamonds, aes(price)) +
+  geom_histogram(binwidth = 1000)
+```
+
+
+
+## Boxplots
+
+- Boxplots are a very useful method of graphing data as they clearly show the distribution of data.
+
+- Boxplots take the following format:
+
+```{r, echo=FALSE,fig.align = 'center', fig.cap='Image sourced from www.flowingdata.com'}
+knitr::include_graphics("images/box-plot-explained.gif")
+```
+
+
+### Basic Boxplot
+
+```{r basicBoxplot, exercise= TRUE, exercise.eval= TRUE}
+ggplot(data = mpg, mapping = aes(x = drv, y = cty)) + 
+  geom_boxplot()
+```
+
+### Boxplot with Colour
+
+```{r colourBoxplot, exercise= TRUE, exercise.eval= TRUE}
+ggplot(data = mpg, mapping = aes(x = drv, y = cty, fill= drv)) + 
+  geom_boxplot()
+```
+
+- The legend to the right of the plot can be removed by using the `theme()` function.
+
+```{r boxplotNoLegend, exercise= TRUE, exercise.eval= TRUE}
+ggplot(data = mpg, mapping = aes(x = drv, y = cty, fill= drv)) + 
+  geom_boxplot()+ theme(legend.position="none")
+```
+
+- For more information and examples on how to use `ggplot2` to plot data, read the [data visualisation](http://r4ds.had.co.nz/data-visualisation.html) chapter from the [R for Data Science](http://r4ds.had.co.nz/index.html) book.
+
+
