@@ -35,17 +35,6 @@ Alternatively, you can install and load packages in RStudio as follows:
 
 ![](images/load%20package.png)
 
-    ## -- Attaching packages ------------------------------------------- tidyverse 1.2.1 --
-
-    ## v ggplot2 3.1.0     v purrr   0.2.5
-    ## v tibble  2.0.1     v dplyr   0.7.8
-    ## v tidyr   0.8.2     v stringr 1.3.1
-    ## v readr   1.3.1     v forcats 0.3.0
-
-    ## -- Conflicts ---------------------------------------------- tidyverse_conflicts() --
-    ## x dplyr::filter() masks stats::filter()
-    ## x dplyr::lag()    masks stats::lag()
-
 The Dataset
 -----------
 
@@ -92,7 +81,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = cty))
 ```
 
-![](Tutorial_3_files/figure-markdown_github/unnamed-chunk-3-1.png)
+![](Tutorial_3_files/figure-markdown_github/firstScatter-1.png)
 
 **Exercise 1: Produce a scatterplot with `disp` on the x-axis and `hwy` (highway miles per gallon) on the y-axis.**
 
@@ -124,7 +113,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = cty, colour = drv))
 ```
 
-![](Tutorial_3_files/figure-markdown_github/unnamed-chunk-4-1.png)
+![](Tutorial_3_files/figure-markdown_github/scatterColour-1.png)
 
 **Exercise 2: Colour the scatterplot created in Exercise 1 using the `class` variable.**
 
@@ -147,7 +136,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = cty, shape = drv))
 ```
 
-![](Tutorial_3_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![](Tutorial_3_files/figure-markdown_github/shape-1.png)
 
 -   These are examples of just some of the changes you can make to scatterplots. Exploring the help file for `geom_point` will help you find out more about the function.
 
@@ -201,7 +190,7 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = color))
 ```
 
-![](Tutorial_3_files/figure-markdown_github/unnamed-chunk-7-1.png)
+![](Tutorial_3_files/figure-markdown_github/basicBar-1.png)
 
 **Exercise 3: Create a barplot of the `cut` variable.**
 
@@ -215,7 +204,7 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = color, fill = color))
 ```
 
-![](Tutorial_3_files/figure-markdown_github/unnamed-chunk-8-1.png)
+![](Tutorial_3_files/figure-markdown_github/barColour-1.png)
 
 -   Alternatively, you can colour the barplot using another variable:
 
@@ -224,7 +213,7 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = color, fill = cut))
 ```
 
-![](Tutorial_3_files/figure-markdown_github/unnamed-chunk-9-1.png)
+![](Tutorial_3_files/figure-markdown_github/barColour2-1.png)
 
 -   Another interesting barplot iteration:
 
@@ -233,7 +222,7 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = color, fill = cut), position = "dodge")
 ```
 
-![](Tutorial_3_files/figure-markdown_github/unnamed-chunk-10-1.png)
+![](Tutorial_3_files/figure-markdown_github/barDodge-1.png)
 
 Basic Histogram
 ---------------
@@ -243,7 +232,7 @@ ggplot(diamonds, aes(price)) +
   geom_histogram(binwidth = 250)
 ```
 
-![](Tutorial_3_files/figure-markdown_github/unnamed-chunk-11-1.png)
+![](Tutorial_3_files/figure-markdown_github/basicHist-1.png)
 
 **Exercise 4: Create a histogram of price but this time set the `binwidth` parameter to 1000. What effect does this have on the resulting plot?**
 
@@ -255,7 +244,7 @@ ggplot(diamonds, aes(price, fill = color)) +
   geom_histogram(binwidth = 1000)
 ```
 
-![](Tutorial_3_files/figure-markdown_github/unnamed-chunk-12-1.png)
+![](Tutorial_3_files/figure-markdown_github/colourHist-1.png)
 
 Boxplots
 --------
@@ -275,7 +264,7 @@ ggplot(data = mpg, mapping = aes(x = drv, y = cty)) +
   geom_boxplot()
 ```
 
-![](Tutorial_3_files/figure-markdown_github/unnamed-chunk-13-1.png)
+![](Tutorial_3_files/figure-markdown_github/basicBox-1.png)
 
 ### Boxplot with Colour
 
@@ -284,7 +273,7 @@ ggplot(data = mpg, mapping = aes(x = drv, y = cty, fill= drv)) +
   geom_boxplot()
 ```
 
-![](Tutorial_3_files/figure-markdown_github/unnamed-chunk-14-1.png)
+![](Tutorial_3_files/figure-markdown_github/colourBox-1.png)
 
 -   The legend to the right of the plot can be removed by using the `theme()` function.
 
@@ -293,6 +282,6 @@ ggplot(data = mpg, mapping = aes(x = drv, y = cty, fill= drv)) +
   geom_boxplot()+ theme(legend.position="none")
 ```
 
-![](Tutorial_3_files/figure-markdown_github/unnamed-chunk-15-1.png)
+![](Tutorial_3_files/figure-markdown_github/noLegend-1.png)
 
 -   For more information and examples on how to use `ggplot2` to plot data, read the [data visualisation](http://r4ds.had.co.nz/data-visualisation.html) chapter from the [R for Data Science](http://r4ds.had.co.nz/index.html) book.
