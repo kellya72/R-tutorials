@@ -74,7 +74,7 @@ summarise(byCollege, averageYearsActive= mean(years_active))
 
 **Exercise 2: Group the dataset using the `year_start` variable and then find the maximum `year_end` associated with each starting year.**
 
-**Exercise 3: Group the `flights` dataset by `year` and `dest` then find the average arrival delay for each grouping.**
+**Exercise 3: Group the `flights` dataset by `dest` and `carrier` then find the average distance for each grouping.**
 
 ### `ungroup()`
 
@@ -116,6 +116,6 @@ ggplot(data = averageYearsActive) +
 
 **Exercise 5: Create a bar plot using the positions variable but only for players of height of 6-8. Colour the bars based on the position.**
 
-**Exercise 6: Using the `flights` dataset, take only the flights which occured from 2015 onwards and had a departure delay of over two hours. Group these flights then by destination and find the average arrival delay for each destination. Plot the 5 destinations with the largest average arrival delay using a scatterplot.**
+**Exercise 6: Group `playerData` by `college` and find the minimum `year_start` for each college. Create a bar plot of the number of colleges for each minimum start year up to and including 1955.**
 
-For more information and examples on the functions used in this weeks tutorial and how to incorporate them in graphs, read the [data transformation](https://r4ds.had.co.nz/transform.html) and the \[exploratory data analysis\] (<https://r4ds.had.co.nz/exploratory-data-analysis.html>) chapters from the [R for Data Science](http://r4ds.had.co.nz/index.html) book.
+For more information and examples on the functions used in this weeks tutorial and how to incorporate them in graphs, read the [data transformation](https://r4ds.had.co.nz/transform.html) and the [exploratory data analysis](https://r4ds.had.co.nz/exploratory-data-analysis.html) chapters from the [R for Data Science](http://r4ds.had.co.nz/index.html) book.
