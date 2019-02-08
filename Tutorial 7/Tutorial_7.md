@@ -108,7 +108,7 @@ flightsLJ <- flights %>%
 
 -   The flights table now has 21 columns with the `carrier` variable as the last column. The `carrier` column isn't visible in the R console as the dataset is too wide. To see all the variables use the `View()` function.
 
-**Exercise 2: Create a new smaller `flights` dataset which only contains the `flight`, `origin`, `dest` and `tailnum` variables and call it `flights2`. The left join the `planes` table to `flights2` so that `flights2` will now contain all the information about the planes used in each flight.**
+**Exercise 2: Create a new smaller `flights` dataset which only contains the `flight`, `origin`, `dest` and `tailnum` variables and call it `flights2`. Then left join the `planes` table to `flights2` so that `flights2` will now contain all the information about the planes used in each flight.**
 
 -   When joining two tables the keys in the two tables may not have the same name in both tables. For example the `airports` table has a variable `faa` that contains the FAA code for each airport. When joining this table to the `flights` table you will notice that the `faa` variable matches to two variables in the `flights` table: `origin` and `dest`. Therefore you must specify the variable you wish to join the tables on as follows:
 
@@ -135,9 +135,9 @@ flightsTop5 <- flights %>%
   semi_join(top5origins)
 ```
 
-**Execise 2: Find the five most popular destinations and obtain the flight data for only the flights going to those five destinations.**
+**Exercise 3: Find the five most popular destinations and obtain the flight data for only the flights going to those five destinations.**
 
-**Exercise 3: Use the anti-join function to find out if any airlines have no flights in the `flights` dataset.**
+**Exercise 4: Use the anti-join function to find out if any airlines have no flights in the `flights` dataset.**
 
 Set Operators
 -------------
