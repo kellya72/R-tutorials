@@ -16,7 +16,7 @@ This week's tutorial will intoduce more helpful functions for data transformatio
 
 - Load the `tidyverse` package.
 
-- Download the **player_data.csv**.
+- Download the **player_data.csv** file from the **Tutorial 5** folder.
 
 - Read the dataset into R, assigning it the name `playerData`.
 
@@ -64,7 +64,7 @@ summarise(byCollege, averageYearsActive= mean(years_active))
 
 **Exercise 2: Group the dataset using the `year_start` variable and then find the maximum `year_end` associated with each starting year.**
 
-**Exercise 3: Group the `flights` dataset by `year` and `dest` then find the average arrival delay for each grouping.** 
+**Exercise 3: Group the `flights` dataset by `dest` and `carrier` then find the average distance for each grouping.** 
 
 ### `ungroup()`
 - If you wish to remove a grouping, you can do so simply by using the `ungroup()` function as follows:
@@ -78,7 +78,7 @@ ungroup(byCollege)
 
 - This allows us to create plots that are more specific which can aid us in data analysis. 
 
-- Before continuing on it might be helpful to look over **Tutorial 3** to recap on the plotting using `ggplot`.
+- Before continuing on it might be helpful to look over **Tutorial 3** to recap on plotting using `ggplot`.
 
 - Some of the following functions used have been previously demonstrated in **Tutorial 4**.
 
@@ -86,7 +86,7 @@ ungroup(byCollege)
 
 ### Example 1
 
-- Look at the following code. Do you understand what the functions are doing and what the resulting graph is representing?
+Look at the following code. Do you understand what the functions are doing and what the resulting graph is representing?
 
 ```{r}
 playersAfter1990 <- filter(playerData, year_start>1990)
@@ -101,7 +101,7 @@ ggplot(data = averageYearsActive) +
 
 **Exercise 5: Create a bar plot using the positions variable but only for players of height of 6-8. Colour the bars based on the position.**
 
-**Exercise 6: Using the `flights` dataset, take only the flights which occured from 2015 onwards and had a departure delay of over two hours. Group these flights then by destination and find the average arrival delay for each destination. Plot the 5 destinations with the largest average arrival delay using a scatterplot.**
+**Exercise 6: Group `playerData` by `college` and find the minimum `year_start` for each college. Create a bar plot of the number of colleges for each minimum start year up to and including 1955.**
 
 
-- For more information and examples on the functions used in this weeks tutorial and how to incorporate them in graphs, read the [data transformation](https://r4ds.had.co.nz/transform.html) and the [exploratory data analysis] (https://r4ds.had.co.nz/exploratory-data-analysis.html) chapters from the [R for Data Science](http://r4ds.had.co.nz/index.html) book.
+For more information and examples on the functions used in this weeks tutorial and how to incorporate them in graphs, read the [data transformation](https://r4ds.had.co.nz/transform.html) and the [exploratory data analysis](https://r4ds.had.co.nz/exploratory-data-analysis.html) chapters from the [R for Data Science](http://r4ds.had.co.nz/index.html) book.

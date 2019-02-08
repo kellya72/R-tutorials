@@ -39,7 +39,8 @@ Alternatively, you can install and load packages in RStudio as follows:
 
 ![](images/load package.png)
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE, results='hide'}
+library(tidyverse)
 library(ggplot2)
 ```
 
@@ -65,14 +66,14 @@ mpg
 
 ## Scatterplots
 
-- We will start by producing a basic scatterplot of the `disp` (engine displacement in litres) and `cty` (city miles per gallon) variables. 
+- We will start by producing a basic scatterplot of the `displ` (engine displacement in litres) and `cty` (city miles per gallon) variables. 
 
-```{r}
+```{r firstScatter}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = cty))
 ```
 
-**Exercise 1: Produce a scatterplot with `disp` on the x-axis and `hwy` (highway miles per gallon) on the y-axis.**
+**Exercise 1: Produce a scatterplot with `displ` on the x-axis and `hwy` (highway miles per gallon) on the y-axis.**
 
 ## Graphing Template
 
@@ -95,7 +96,7 @@ ggplot(data = mpg) +
 
 - In the scatterplot below we have now coloured the data points using the `drv` variable. This means that data points will be coloured based on whether the car is a front-wheel drive, rear-wheel drive or four-wheel drive.
 
-```{r}
+```{r scatterColour}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = cty, colour = drv))
 ```
@@ -113,7 +114,7 @@ ggplot(data = mpg) +
 ```
 
 
-```{r}
+```{r shape}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = cty, shape = drv))
 ```
@@ -153,7 +154,7 @@ diamonds
 
 ## Basic Barplot
 
-```{r}
+```{r basicBar}
 ggplot(data = diamonds) + 
   geom_bar(mapping = aes(x = color))
 ```
@@ -164,28 +165,28 @@ ggplot(data = diamonds) +
 
 - You can colour a barplot depending on the variable being plotted as shown below:
 
-```{r, }
+```{r barColour}
 ggplot(data = diamonds) + 
   geom_bar(mapping = aes(x = color, fill = color))
 ```
 
 - Alternatively, you can colour the barplot using another variable:
 
-```{r}
+```{r barColour2}
 ggplot(data = diamonds) + 
   geom_bar(mapping = aes(x = color, fill = cut))
 ```
 
 - Another interesting barplot iteration:
 
-```{r}
+```{r barDodge}
 ggplot(data = diamonds) + 
   geom_bar(mapping = aes(x = color, fill = cut), position = "dodge")
 ```
 
 ## Basic Histogram
 
-```{r}
+```{r basicHist}
 ggplot(diamonds, aes(price)) +
   geom_histogram(binwidth = 250)
 ```
@@ -193,7 +194,7 @@ ggplot(diamonds, aes(price)) +
 **Exercise 4: Create a histogram of price but this time set the `binwidth` parameter to 1000. What effect does this have on the resulting plot?**
 
 ## Histogram with Colour
-```{r}
+```{r colourHist}
 ggplot(diamonds, aes(price, fill = color)) +
   geom_histogram(binwidth = 1000)
 ```
@@ -212,21 +213,21 @@ ggplot(diamonds, aes(price, fill = color)) +
 
 ### Basic Boxplot
 
-```{r}
+```{r basicBox}
 ggplot(data = mpg, mapping = aes(x = drv, y = cty)) + 
   geom_boxplot()
 ```
 
 ### Boxplot with Colour
 
-```{r}
+```{r colourBox}
 ggplot(data = mpg, mapping = aes(x = drv, y = cty, fill= drv)) + 
   geom_boxplot()
 ```
 
 - The legend to the right of the plot can be removed by using the `theme()` function.
 
-```{r}
+```{r noLegend}
 ggplot(data = mpg, mapping = aes(x = drv, y = cty, fill= drv)) + 
   geom_boxplot()+ theme(legend.position="none")
 ```

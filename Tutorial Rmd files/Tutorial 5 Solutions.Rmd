@@ -1,0 +1,59 @@
+---
+title: "Tutorial 5: Solutions"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r, echo=FALSE, message=FALSE}
+library(tidyverse)
+playerData <- read.csv("player_data.csv")
+```
+
+### Exercise 1
+```{r}
+library(nycflights13)
+flights <- mutate(flights, kmPerMinute= distance/air_time)
+```
+
+### Exercise 2
+
+```{r}
+byStartYear <- group_by(playerData, year_start)
+summarise(byStartYear, maxYearEnd= max(year_end))
+```
+
+### Exercise 3
+
+```{r}
+byDestAndCarrier <- group_by(flights, dest, carrier)
+summarise(byDestAndCarrier, averageDistance= mean(distance))
+```
+### Exercise 4
+
+```{r, warning=FALSE}
+ggplot(data = playerData, mapping = aes(x= position, y = weight)) + 
+  geom_boxplot()
+```
+
+
+### Exercise 5
+
+```{r}
+players6ft8 <- filter(playerData, height == "6-8")
+ggplot(data = players6ft8) + 
+  geom_bar(mapping = aes(x = position, fill = position))
+```
+
+### Exercise 6
+
+```{r}
+groupByCollege <- group_by(playerData, college)
+minYearStart <- summarise(groupByCollege, minYear = min(year_start))
+minYearStart <- filter(minYearStart, minYear<=1955)
+ggplot(data = minYearStart) + 
+  geom_bar(mapping = aes(x = minYear))
+```
+
+

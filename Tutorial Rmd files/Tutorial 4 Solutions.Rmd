@@ -1,0 +1,56 @@
+---
+title: "Tutorial 4: Solutions"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Exercise 1
+
+```{r, echo=FALSE}
+pulseData <- read.table("pulse.txt", header = TRUE)
+fastFoodData <- read.csv("fastfood_calories.csv", header = TRUE)
+```
+```{r}
+write.table(fastFoodData, "savedFastFood.csv", sep = ",")
+```
+
+### Exercise 2
+
+```{r}
+cleanPulseData <- pulseData[complete.cases(pulseData),]
+```
+
+### Exercise 3
+```{r tidy, echo= FALSE, message=FALSE}
+library(tidyverse)
+```
+```{r}
+lowRateNonSmokers <- filter(cleanPulseData, Smokes== "No", Weight< 180)
+lowRateNonSmokers[1:10,]
+```
+
+### Exercise 4
+
+```{r}
+lessThanOrEqualTo170 <- filter(cleanPulseData, Weight <= 170)
+lessThanOrEqualTo170[1:10,]
+```
+
+### Exercise 5
+
+```{r}
+pulseAndSmokesOrder <- arrange(cleanPulseData, RestingPulse, Smokes)
+pulseAndSmokesOrder[1:10,]
+```
+
+### Exercise 6
+
+```{r}
+fastFoodNutrition = select(fastFoodData, restaurant, item, calories, total_fat, sugar, protein)
+fastFoodNutrition[1:5,]
+
+```
+

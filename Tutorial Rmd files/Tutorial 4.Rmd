@@ -47,7 +47,7 @@ oliveData <- load("Olive.Rdata")
 write.table(pulseData, "savedPulse.txt")
 ```
 
-**Exercise 1: Save `studentData` as a file called `savedStudent.csv`. Hint: you can use the `read.table()` function to save a csv if you set `sep=","`.**
+**Exercise 1: Save `fastFoodData` as a file called `savedFastFood.csv`. Hint: you can use the `read.table()` function to save a csv if you set `sep=","`.**
 
 ## Missing Data
 - Datasets often can contain missing data.
@@ -108,7 +108,8 @@ library(tidyverse)
 - For example, you may wish to create a subset of cases from `cleanPulseData` containing only individuals who smoke and weigh over 160. 
 
 ```{r}
-smokersOver160 <- filter(cleanPulseData, Smokes== "Yes", Weight> 160)
+smokersOver160 <- filter(cleanPulseData, RestingPulse == "Low", Smokes== "Yes", Weight> 160)
+head(smokersOver160)
 ```
 
 **Exercise 3: Create a subset from `cleanPulseData` which contains individuals with a low resting pulse who do not smoke and weight less than 180. Name the subset `lowRateNonSmokers`.**
@@ -120,20 +121,21 @@ smokersOver160 <- filter(cleanPulseData, Smokes== "Yes", Weight> 160)
 
 ```{r}
 weightOrder <- arrange(cleanPulseData, Weight)
-weightOrder
+weightOrder[1:5,]
 ```
 
 - The data frame is arranged in ascending order by default. However, you can sort the data by descending order using the following code:
 
 ```{r}
 weightOrderDesc <- arrange(cleanPulseData, desc(Weight))
+weightOrderDesc[1:5,]
 ```
 
 - It is also possible to include more than one column name in the `arrange()` function.
 
 ```{r}
 smokesAndPulseOrder <- arrange(cleanPulseData,Smokes, RestingPulse)
-smokesAndPulseOrder
+smokesAndPulseOrder[1:5,]
 ```
 
 **Exercise 5: Run the above function again but this time input `RestingPulse` into the function before `Smokes`. What effect does this have on the resulting dataset.** 

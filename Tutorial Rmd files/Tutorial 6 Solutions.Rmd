@@ -1,0 +1,39 @@
+---
+title: "Tutorial 6: Solutions"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE, results='hide', message=FALSE}
+library(tidyverse)
+```
+
+### Exercise 1
+
+```{r}
+californiaFiresData <- read.csv("californiaFires.csv")
+californiaFiresData <- californiaFiresData %>% 
+                          separate(damage, into = c("acresBurned", "costOfDamage"), sep = "/")
+head(californiaFiresData)
+```
+
+
+### Exercise 2
+
+```{r}
+californiaFiresData <- californiaFiresData  %>% 
+                          separate(costOfDamage, into = c("millions", "thousands"), sep = -6)
+head(californiaFiresData)
+```
+
+### Exercise 3
+
+```{r}
+californiaFiresData <- californiaFiresData %>%
+                            unite(fireDamage, NUMBER.OF.FIRES, acresBurned, sep="/")
+head(californiaFiresData)
+```
+

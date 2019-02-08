@@ -1,0 +1,50 @@
+---
+title: "Tutorial 7: Solutions"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, message=FALSE, echo=FALSE}
+library(tidyverse)
+library(nycflights13)
+```
+
+
+### Exercise 1 
+
+```{r}
+airlines %>% 
+  count(carrier) %>% 
+  filter(n > 1)
+```
+
+### Exercise 2
+
+```{r}
+flights2 <- select(flights, flight, origin, dest, tailnum)
+flights2 <- flights2 %>%
+              left_join(planes, by= "tailnum")
+head(flights2)
+```
+
+### Exercise 3
+
+```{r}
+top5dest <- flights %>%
+  count(dest, sort = TRUE) %>%
+  head(5)
+flightsTop5dest <- flights %>% 
+  semi_join(top5dest)
+head(flightsTop5dest)
+```
+
+### Exercise 4
+
+```{r}
+airlines %>% 
+  anti_join(flights, by = "carrier")
+```
+

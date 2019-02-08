@@ -1,0 +1,41 @@
+---
+title: "Tutorial 3: Solutions"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE, message=FALSE, results='hide'}
+library(tidyverse)
+library(ggplot2)
+```
+### Exercise 1
+
+```{r ex1}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+### Exercise 2
+
+```{r ex2}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = cty, colour= class))
+```
+
+### Exercise 3
+
+```{r ex3}
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut))
+```
+
+### Exercise 4
+
+```{r ex4}
+ggplot(diamonds, aes(price)) +
+  geom_histogram(binwidth = 1000)
+```
+
