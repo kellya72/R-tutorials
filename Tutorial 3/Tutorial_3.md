@@ -74,7 +74,7 @@ mpg
 Scatterplots
 ------------
 
--   We will start by producing a basic scatterplot of the `disp` (engine displacement in litres) and `cty` (city miles per gallon) variables.
+-   We will start by producing a basic scatterplot of the `displ` (engine displacement in litres) and `cty` (city miles per gallon) variables.
 
 ``` r
 ggplot(data = mpg) + 
@@ -83,7 +83,7 @@ ggplot(data = mpg) +
 
 ![](Tutorial_3_files/figure-markdown_github/firstScatter-1.png)
 
-**Exercise 1: Produce a scatterplot with `disp` on the x-axis and `hwy` (highway miles per gallon) on the y-axis.**
+**Exercise 1: Produce a scatterplot with `displ` on the x-axis and `hwy` (highway miles per gallon) on the y-axis.**
 
 Graphing Template
 -----------------
