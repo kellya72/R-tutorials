@@ -44,7 +44,7 @@ Saving Datasets as Files
 write.table(pulseData, "savedPulse.txt")
 ```
 
-**Exercise 1: Save `studentData` as a file called `savedStudent.csv`. Hint: you can use the `read.table()` function to save a csv if you set `sep=","`.**
+**Exercise 1: Save `fastFoodData` as a file called `savedFastFood.csv`. Hint: you can use the `read.table()` function to save a csv if you set `sep=","`.**
 
 Missing Data
 ------------
@@ -116,8 +116,17 @@ Data Tansformation
 -   For example, you may wish to create a subset of cases from `cleanPulseData` containing only individuals who smoke and weigh over 160.
 
 ``` r
-smokersOver160 <- filter(cleanPulseData, Smokes== "Yes", Weight> 160)
+smokersOver160 <- filter(cleanPulseData, RestingPulse == "Low", Smokes== "Yes", Weight> 160)
+head(smokersOver160)
 ```
+
+    ##   RestingPulse Smokes Weight
+    ## 1          Low    Yes    190
+    ## 2          Low    Yes    175
+    ## 3          Low    Yes    170
+    ## 4          Low    Yes    180
+    ## 5          Low    Yes    185
+    ## 6          Low    Yes    170
 
 **Exercise 3: Create a subset from `cleanPulseData` which contains individuals with a low resting pulse who do not smoke and weight less than 180. Name the subset `lowRateNonSmokers`.**
 
@@ -129,195 +138,43 @@ smokersOver160 <- filter(cleanPulseData, Smokes== "Yes", Weight> 160)
 
 ``` r
 weightOrder <- arrange(cleanPulseData, Weight)
-weightOrder
+weightOrder[1:5,]
 ```
 
-    ##    RestingPulse Smokes Weight
-    ## 1          High     No     95
-    ## 2           Low     No    102
-    ## 3           Low    Yes    108
-    ## 4           Low     No    108
-    ## 5           Low     No    110
-    ## 6           Low    Yes    112
-    ## 7           Low     No    115
-    ## 8           Low     No    115
-    ## 9          High     No    116
-    ## 10         High     No    116
-    ## 11          Low     No    118
-    ## 12         High     No    118
-    ## 13          Low     No    120
-    ## 14          Low     No    120
-    ## 15          Low     No    120
-    ## 16         High    Yes    121
-    ## 17          Low     No    122
-    ## 18          Low     No    123
-    ## 19          Low     No    125
-    ## 20          Low     No    125
-    ## 21          Low     No    125
-    ## 22          Low     No    130
-    ## 23          Low    Yes    130
-    ## 24          Low    Yes    130
-    ## 25         High     No    130
-    ## 26          Low     No    130
-    ## 27         High    Yes    131
-    ## 28          Low     No    133
-    ## 29          Low     No    135
-    ## 30          Low     No    135
-    ## 31         High    Yes    135
-    ## 32         High     No    136
-    ## 33          Low     No    138
-    ## 34          Low     No    140
-    ## 35         High    Yes    140
-    ## 36          Low     No    140
-    ## 37          Low     No    142
-    ## 38          Low     No    145
-    ## 39          Low     No    145
-    ## 40          Low    Yes    145
-    ## 41         High     No    145
-    ## 42          Low     No    148
-    ## 43         High    Yes    150
-    ## 44          Low    Yes    150
-    ## 45          Low     No    150
-    ## 46          Low     No    150
-    ## 47          Low    Yes    150
-    ## 48          Low     No    150
-    ## 49         High    Yes    150
-    ## 50          Low     No    150
-    ## 51         High     No    150
-    ## 52         High    Yes    153
-    ## 53          Low     No    155
-    ## 54          Low     No    155
-    ## 55          Low     No    155
-    ## 56          Low     No    155
-    ## 57          Low     No    155
-    ## 58          Low     No    155
-    ## 59          Low    Yes    155
-    ## 60          Low    Yes    155
-    ## 61         High     No    155
-    ## 62          Low     No    155
-    ## 63          Low     No    157
-    ## 64          Low    Yes    160
-    ## 65         High    Yes    160
-    ## 66          Low     No    160
-    ## 67          Low     No    160
-    ## 68          Low    Yes    164
-    ## 69          Low     No    165
-    ## 70          Low     No    170
-    ## 71          Low    Yes    170
-    ## 72          Low     No    170
-    ## 73          Low    Yes    170
-    ## 74          Low     No    175
-    ## 75          Low    Yes    175
-    ## 76          Low    Yes    180
-    ## 77         High    Yes    180
-    ## 78          Low     No    180
-    ## 79          Low    Yes    185
-    ## 80          Low    Yes    190
-    ## 81          Low     No    190
-    ## 82          Low     No    190
-    ## 83          Low    Yes    190
-    ## 84          Low     No    195
-    ## 85          Low     No    215
+    ##   RestingPulse Smokes Weight
+    ## 1         High     No     95
+    ## 2          Low     No    102
+    ## 3          Low    Yes    108
+    ## 4          Low     No    108
+    ## 5          Low     No    110
 
 -   The data frame is arranged in ascending order by default. However, you can sort the data by descending order using the following code:
 
 ``` r
 weightOrderDesc <- arrange(cleanPulseData, desc(Weight))
+weightOrderDesc[1:5,]
 ```
+
+    ##   RestingPulse Smokes Weight
+    ## 1          Low     No    215
+    ## 2          Low     No    195
+    ## 3          Low    Yes    190
+    ## 4          Low     No    190
+    ## 5          Low     No    190
 
 -   It is also possible to include more than one column name in the `arrange()` function.
 
 ``` r
 smokesAndPulseOrder <- arrange(cleanPulseData,Smokes, RestingPulse)
-smokesAndPulseOrder
+smokesAndPulseOrder[1:5,]
 ```
 
-    ##    RestingPulse Smokes Weight
-    ## 1          High     No    116
-    ## 2          High     No    155
-    ## 3          High     No    145
-    ## 4          High     No    136
-    ## 5          High     No    130
-    ## 6          High     No    118
-    ## 7          High     No    116
-    ## 8          High     No     95
-    ## 9          High     No    150
-    ## 10          Low     No    140
-    ## 11          Low     No    155
-    ## 12          Low     No    165
-    ## 13          Low     No    190
-    ## 14          Low     No    195
-    ## 15          Low     No    138
-    ## 16          Low     No    155
-    ## 17          Low     No    145
-    ## 18          Low     No    170
-    ## 19          Low     No    175
-    ## 20          Low     No    135
-    ## 21          Low     No    170
-    ## 22          Low     No    157
-    ## 23          Low     No    130
-    ## 24          Low     No    120
-    ## 25          Low     No    125
-    ## 26          Low     No    145
-    ## 27          Low     No    125
-    ## 28          Low     No    190
-    ## 29          Low     No    155
-    ## 30          Low     No    155
-    ## 31          Low     No    215
-    ## 32          Low     No    155
-    ## 33          Low     No    155
-    ## 34          Low     No    150
-    ## 35          Low     No    150
-    ## 36          Low     No    160
-    ## 37          Low     No    135
-    ## 38          Low     No    160
-    ## 39          Low     No    148
-    ## 40          Low     No    150
-    ## 41          Low     No    180
-    ## 42          Low     No    140
-    ## 43          Low     No    142
-    ## 44          Low     No    123
-    ## 45          Low     No    155
-    ## 46          Low     No    120
-    ## 47          Low     No    130
-    ## 48          Low     No    120
-    ## 49          Low     No    118
-    ## 50          Low     No    125
-    ## 51          Low     No    122
-    ## 52          Low     No    115
-    ## 53          Low     No    102
-    ## 54          Low     No    115
-    ## 55          Low     No    150
-    ## 56          Low     No    110
-    ## 57          Low     No    133
-    ## 58          Low     No    108
-    ## 59         High    Yes    160
-    ## 60         High    Yes    153
-    ## 61         High    Yes    121
-    ## 62         High    Yes    150
-    ## 63         High    Yes    180
-    ## 64         High    Yes    140
-    ## 65         High    Yes    150
-    ## 66         High    Yes    131
-    ## 67         High    Yes    135
-    ## 68          Low    Yes    160
-    ## 69          Low    Yes    190
-    ## 70          Low    Yes    175
-    ## 71          Low    Yes    170
-    ## 72          Low    Yes    180
-    ## 73          Low    Yes    185
-    ## 74          Low    Yes    130
-    ## 75          Low    Yes    112
-    ## 76          Low    Yes    170
-    ## 77          Low    Yes    150
-    ## 78          Low    Yes    145
-    ## 79          Low    Yes    155
-    ## 80          Low    Yes    130
-    ## 81          Low    Yes    155
-    ## 82          Low    Yes    150
-    ## 83          Low    Yes    190
-    ## 84          Low    Yes    164
-    ## 85          Low    Yes    108
+    ##   RestingPulse Smokes Weight
+    ## 1         High     No    116
+    ## 2         High     No    155
+    ## 3         High     No    145
+    ## 4         High     No    136
+    ## 5         High     No    130
 
 **Exercise 5: Run the above function again but this time input `RestingPulse` into the function before `Smokes`. What effect does this have on the resulting dataset.**
 
