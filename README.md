@@ -42,6 +42,8 @@
 ## Week 9: Factors
 - [Tutorial 9](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%209/Tutorial_9.md)
 - [Tutorial 9 Solutions](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%209/Tutorial_9_Solutions.md)
+- Dataset:
+  - [alcohol_consumption.csv](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%209/alcohol_consumption.csv)
 
 ## Week 10: R Markdown
 - [Tutorial 10](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%2010/Tutorial%2010.Rmd)
