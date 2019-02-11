@@ -29,7 +29,7 @@
 - [Tutorial 6](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%206/Tutorial_6.md)
 - [Tutorial 6 Solutions](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%206/Tutorial_6_Solutions.md)
 - Dataset:
-  - [californiaFires](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%206/californiaFires.csv)
+  - [californiaFires.csv](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%206/californiaFires.csv)
 
 ## Week 7: Relational Data
 - [Tutorial 7](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%207/Tutorial_7.md)
