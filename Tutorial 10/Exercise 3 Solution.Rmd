@@ -1,0 +1,35 @@
+---
+title: "First R Markdown Word Document"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Combining Code and Text
+- You might want to include both the code chunk and code output in your final document like below:
+
+```{r codeAndOutput}
+numbers <- c(1, 4, 6, 7)
+sum(numbers)
+```
+
+
+- Sometimes you may prefer to simply include the output from your code:
+
+```{r justOutput, echo=FALSE}
+sum(numbers)
+```
+
+## Plotting In R Markdown
+- The inclusion of plots in your reports can really enhance their effectiveness.
+
+### Scatterplot
+- This scatterplot was created using the **cars** dataset from the *datasets* package.
+
+```{r carsScatterplot, echo=FALSE, fig.cap="Scatterplot of Cars Dataset"}
+library(ggplot2)
+ggplot(data = cars)+ geom_point(mapping = aes(x = speed, y = dist))
+```
+
