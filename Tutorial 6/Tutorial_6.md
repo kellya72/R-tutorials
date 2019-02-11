@@ -209,7 +209,7 @@ table3Separate <- table3 %>%
                     separate(result, into = c("population", "GDP"), sep = "/")
 ```
 
-**Exercise 1: Download and read in `californiaFires.csv`. Seperate the `damage` variable into two separate variables: `acresBurned` and `costOfDamage`.**
+**Exercise 1: Download and read in [`californiaFires.csv`](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%206/californiaFires.csv). Seperate the `damage` variable into two separate variables: `acresBurned` and `costOfDamage`.**
 
 -   The `sep` argument can also be set to a number which indicates the position at which to split the column.
 
