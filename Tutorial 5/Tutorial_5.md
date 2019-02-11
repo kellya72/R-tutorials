@@ -12,7 +12,7 @@ Getting Started
 
 -   Load the `tidyverse` package.
 
--   Download the **player\_data.csv** file from the **Tutorial 5** folder.
+-   Download the [**player\_data.csv**](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%205/player_data.csv) file from the **Tutorial 5** folder.
 
 -   Read the dataset into R, assigning it the name `playerData`.
 
