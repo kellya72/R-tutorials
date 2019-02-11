@@ -1,4 +1,4 @@
-Tutorial 4
+Tutorial 4: Data Transformation
 ================
 
 This weeks tutorial will show you how to read in datasets to R, save datasets as files and deal with missing data. We will also look at the `filter()`, `arrange()` and `select()` functions which are useful for data transformation.
@@ -8,7 +8,7 @@ Reading in Data
 
 -   Ensure you have set the working directory to **R Tutorials**.
 
--   Download the 'Olive.Rdata', 'pulse.txt' and 'fastfood\_calories.csv' files from the Tutorial 4 folder.
+-   Download the ['Olive.Rdata'](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%204/olive.Rdata), ['pulse.txt'](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%204/pulse.txt) and ['fastfood\_calories.csv'](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%204/fastfood_calories.csv) files from the Tutorial 4 folder. To dowload the latter two you will need to click the button that says **Raw** on the datasets' Github page and then right click and select **Save As** on the raw Github page.
 
 -   Ensure that you save the files in the **R Tutorials** folder.
 
