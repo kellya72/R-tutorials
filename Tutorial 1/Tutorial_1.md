@@ -148,7 +148,7 @@ Basic Functions
 Working Directories
 -------------------
 
--   Create a new file on your desktop and name it **R Tutorials**.
+-   Create a new folder on your desktop and name it **R Tutorials**.
 
 -   This is where you will save all your work from this course.
 
