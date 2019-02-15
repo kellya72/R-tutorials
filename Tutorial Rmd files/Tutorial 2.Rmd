@@ -130,7 +130,7 @@ apply(testScores, 2, mean)
 - The code below shows how to make the necessary charges to the matrix.
 
 ```{r}
-testScores[,"Jan"]= testScores[,"Jan"]+5
+testScores[,"Jan"] <- testScores[,"Jan"]+5
 testScores
 ```
 

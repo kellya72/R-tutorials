@@ -167,7 +167,7 @@ Editing Data in Matrix
 -   The code below shows how to make the necessary charges to the matrix.
 
 ``` r
-testScores[,"Jan"]= testScores[,"Jan"]+5
+testScores[,"Jan"] <- testScores[,"Jan"]+5
 testScores
 ```
 
