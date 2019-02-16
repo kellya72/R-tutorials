@@ -8,7 +8,7 @@ Reading in Data
 
 -   Ensure you have set the working directory to **R Tutorials**.
 
--   Download the ['Olive.Rdata'](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%204/olive.Rdata), ['pulse.txt'](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%204/pulse.txt) and ['fastfood\_calories.csv'](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%204/fastfood_calories.csv) files from the Tutorial 4 folder. To dowload the latter two you will need to click the button that says **Raw** on the datasets' Github page and then right click and select **Save As** on the raw Github page.
+-   Download the ['Olive.Rdata'](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%204/olive.Rdata?raw=true), ['pulse.txt'](https://raw.githubusercontent.com/kellya72/R-tutorials/master/Tutorial%204/pulse.txt) and ['fastfood\_calories.csv'](https://raw.githubusercontent.com/kellya72/R-tutorials/master/Tutorial%204/pulse.txt) files from the Tutorial 4 folder. To dowload the latter two you will need to click the button that says **Raw** on the datasets' Github page and then right click and select **Save As** on the raw Github page.
 
 -   Ensure that you save the files in the **R Tutorials** folder.
 
@@ -36,7 +36,7 @@ Saving Datasets as Files
 
 -   It is also possible to save datasets created or worked on in R as files.
 
--   The `read.table()` function can be used to do this. The function takes the form `read.table(x, file, sep = " ")` where `x` is the name of the dataset in R and `file` is name of the file you wish to create. The `sep` parameter once again is the method by which each row of data is seperated in the resulting file, with the default seperator set to a space.
+-   The `write.table()` function can be used to do this. The function takes the form `write.table(x, file, sep = " ")` where `x` is the name of the dataset in R and `file` is name of the file you wish to create. The `sep` parameter once again is the method by which each row of data is seperated in the resulting file, with the default seperator set to a space.
 
 -   Try running the following code:
 
@@ -97,7 +97,7 @@ View(missingData)
 -   An alternative method of removing missing data is to use the `na.omit()` function:
 
 ``` r
-cleanPulseData = na.omit(pulseData)
+cleanPulseData <- na.omit(pulseData)
 ```
 
 Data Tansformation
@@ -187,7 +187,7 @@ smokesAndPulseOrder[1:5,]
 -   `fastFoodData` has 18 variables for each of its 515 observations. The code below shows how the `select()` function can be used to create a new dataset with less variables.
 
 ``` r
-fastFoodDataSimplified = select(fastFoodData, restaurant, item, calories)
+fastFoodDataSimplified <- select(fastFoodData, restaurant, item, calories)
 ```
 
 **Exercise 6: Use the `select()` function to create a data frame called `fastFoodNutrition` which contains the variables `restaurant`, `item`, `calories`, `total_fat`, `sugar` and `protein`.**
