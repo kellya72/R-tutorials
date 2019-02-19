@@ -285,12 +285,12 @@ ggplot(data = mpg, mapping = aes(x = drv, y = cty, fill= drv)) +
 ![](Tutorial_3_files/figure-markdown_github/noLegend-1.png)
 
 
-## Styling
+# Styling
 
-### Coordinates
+## Coordinates
 
 
-#### Axis Range
+### Axis Range
 - It is possible to shorten or widen the range of both the x and y axis.  
 - Modify `xlim` and `ylims` to see how they effect the plot.
 
@@ -316,7 +316,7 @@ ggplot(data = mpg, mapping = aes(x = drv, y = cty, fill= drv)) +
 
 ![](Tutorial_3_files/figure-markdown_github/coord_advanced-1.png)
 
-#### Axis Flip
+### Axis Flip
 
 - The `coord_flip()` function will flip the x and y axis automatically.  
 - This is useful to display boxplots vertically.
@@ -331,7 +331,7 @@ ggplot(data = mpg) +
 
 
 
-### Labels {data-allow-skip=TRUE}
+## Labels
 
 - The `labs()` function is used to add title's and labels to the plot.  
     - `title` adds a main title.
@@ -362,7 +362,7 @@ ggplot(mpg) +
   
   
 
-### Themes
+## Themes
 
 - Themes change the default colours.
 
