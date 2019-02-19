@@ -285,7 +285,7 @@ ggplot(data = mpg) +
     - `subtitle` adds additional detail in a smaller font beneath the title.
     - `caption` adds text at the bottom right of the plot, often used to describe the source of the data.
 
-**Exercise: add a subtitle and caption to the plot below.**
+**Exercise 5: add a subtitle and caption to the plot below.**
 
 ```{r leabels1}
 ggplot(mpg) +
