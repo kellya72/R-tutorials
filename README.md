@@ -1,19 +1,19 @@
 # R-tutorials
 
 ## Week 1: An Introduction to R
-- [Tutorial 1](/Tutorial_01/Tutorial_1.md)
+- [Tutorial 1](Tutorial_01/Tutorial_1.md)
 
 ## Week 3: Data Visualisation
-- [Tutorial 3](/Tutorial_03/Tutorial_3.md)
-- [Tutorial 3 Solutions](/Tutorial_03/Tutorial_3_solutions.R)
+- [Tutorial 3](Tutorial_03/Tutorial_3.md)
+- [Tutorial 3 Solutions](Tutorial_03/Tutorial_3_solutions.R)
 
 ## Week 4: Data Transformation
-- [Tutorial 4](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%204/Tutorial_4.md)
-- [Tutorial 4 Solutions](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%204/Tutorial_4_Solutions.md)
+- [Tutorial 4](Tutorial%204/Tutorial_4.md)
+- [Tutorial 4 Solutions](Tutorial%204/Tutorial_4_Solutions.md)
 - Datasets:
-  - [olive.Rdata](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%204/olive.Rdata)
-  - [pulse.txt](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%204/pulse.txt)
-  - [fastfood_calories.csv](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%204/fastfood_calories.csv)
+  - [olive.Rdata](Tutorial%204/olive.Rdata)
+  - [pulse.txt](Tutorial%204/pulse.txt)
+  - [fastfood_calories.csv](Tutorial%204/fastfood_calories.csv)
 
 ## Week 5: Data Analysis
 - [Tutorial 5](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%205/Tutorial_5.md)
