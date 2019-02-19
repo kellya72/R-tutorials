@@ -180,7 +180,7 @@ diamonds
     ## 10 0.23  Very Good H     VS1      59.4    61   338  4     4.05  2.39
     ## # ... with 53,930 more rows
 
--   Consult the help file for an exaplanation of the variables contained in the dataset.
+-   Consult the help file for an explanation of the variables contained in the dataset.
 
 Basic Barplot
 -------------
@@ -228,8 +228,8 @@ Basic Histogram
 ---------------
 
 ``` r
-ggplot(diamonds, aes(price)) +
-  geom_histogram(binwidth = 250)
+ggplot(diamonds) +
+  geom_histogram(mapping = aes(price), binwidth = 250)
 ```
 
 ![](Tutorial_3_files/figure-markdown_github/basicHist-1.png)
@@ -240,8 +240,8 @@ Histogram with Colour
 ---------------------
 
 ``` r
-ggplot(diamonds, aes(price, fill = color)) +
-  geom_histogram(binwidth = 1000)
+ggplot(diamonds) +
+  geom_histogram(mapping = aes(price, fill = color), binwidth = 1000)
 ```
 
 ![](Tutorial_3_files/figure-markdown_github/colourHist-1.png)
@@ -260,8 +260,8 @@ Boxplots
 ### Basic Boxplot
 
 ``` r
-ggplot(data = mpg, mapping = aes(x = drv, y = cty)) + 
-  geom_boxplot()
+ggplot(data = mpg) + 
+  geom_boxplot(mapping = aes(x = drv, y = cty))
 ```
 
 ![](Tutorial_3_files/figure-markdown_github/basicBox-1.png)
@@ -269,8 +269,8 @@ ggplot(data = mpg, mapping = aes(x = drv, y = cty)) +
 ### Boxplot with Colour
 
 ``` r
-ggplot(data = mpg, mapping = aes(x = drv, y = cty, fill= drv)) + 
-  geom_boxplot()
+ggplot(data = mpg) + 
+  geom_boxplot(mapping = aes(x = drv, y = cty, fill= drv))
 ```
 
 ![](Tutorial_3_files/figure-markdown_github/colourBox-1.png)
@@ -283,5 +283,140 @@ ggplot(data = mpg, mapping = aes(x = drv, y = cty, fill= drv)) +
 ```
 
 ![](Tutorial_3_files/figure-markdown_github/noLegend-1.png)
+
+
+## Styling
+
+### Coordinates
+
+
+#### Axis Range
+- It is possible to shorten or widen the range of both the x and y axis.  
+- Modify `xlim` and `ylims` to see how they effect the plot.
+
+``` r
+  ggplot(mpg) +
+  geom_point(aes(displ, hwy)) +
+  xlim(2, 4) + ylim(15, 40)
+
+```
+
+![](Tutorial_3_files/figure-markdown_github/coord_simple-1.png)
+
+- It's possible to specify more control on the axis using `scale_x_continuous` and `scale_y_continuous`.
+    - The `limits` argument has the same effect as `xlim` and `ylim`.  
+    - The `breaks` argument allows you to choose where to display numbers on the axes. 
+
+``` r 
+  ggplot(mpg) +
+  geom_point(aes(displ, hwy)) +
+  scale_x_continuous(limits = c(2, 4)) +
+  scale_y_continuous(breaks = seq(15, 40, by = 5))
+```
+
+![](Tutorial_3_files/figure-markdown_github/coord_advanced-1.png)
+
+#### Axis Flip
+
+- The `coord_flip()` function will flip the x and y axis automatically.  
+- This is useful to display boxplots vertically.
+
+``` r
+ggplot(data = mpg) + 
+  geom_boxplot(aes(x = class, y = hwy))
+
+```  
+![](Tutorial_3_files/figure-markdown_github/coord-1.png)
+
+
+
+
+### Labels {data-allow-skip=TRUE}
+
+- The `labs()` function is used to add title's and labels to the plot.  
+    - `title` adds a main title.
+    - `subtitle` adds additional detail in a smaller font beneath the title.
+    - `caption` adds text at the bottom right of the plot, often used to describe the source of the data.
+
+**Exercise: add a subtitle and caption to the plot below.**
+
+``` r
+ggplot(mpg) +
+  geom_point(aes(displ, hwy, color = class)) +
+  labs(title = "Fuel efficiency generally decreases with engine size")
+```
+![](Tutorial_3_files/figure-markdown_github/labels_title-1.png)
+
+
+- You can also use `labs()` to replace the axis and legend titles. 
+- It’s usually a good idea to replace short variable names with more detailed descriptions, and to include the units.
+
+``` r
+ggplot(mpg) +
+  geom_point(aes(displ, hwy, colour = class)) +
+  labs(x = "Engine displacement (L)",
+       y = "Highway fuel economy (mpg)",
+       colour = "Car type")
+```  
+![](Tutorial_3_files/figure-markdown_github/labels3-1.png)
+  
+  
+
+### Themes
+
+- Themes change the default colours.
+
+- `theme_bw()`, `theme_light()`, `theme_classic()`, `theme_gray()` are just some examples.  
+- Change the code to try some of the different themes.  
+
+``` r 
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(color = class)) +
+  theme_bw()
+```
+![](Tutorial_3_files/figure-markdown_github/themes1-1.png)
+
+
+#### Custom Theme
+
+- You can create your own custom theme.
+- After saving your team as a variable it can be used with any plot.
+    - See `my_edge_theme` as an example of this.
+
+``` r
+ # Edge colours from style guide
+edge_pure_green <- rgb(0,160,100, maxColorValue = 255)
+edge_pure_green20 <- rgb(204,236,224, maxColorValue = 255)
+edge_deep_charcoal <- rgb(48,49,53, maxColorValue = 255)
+edge_deep_charcoal50 <- rgb(151,152,154, maxColorValue = 255)
+edge_deep_charcoal20 <- rgb(214,214,215, maxColorValue = 255)
+edge_lime <- rgb(145,190,35, maxColorValue = 255)
+edge_sea_blue <- rgb(15,120,160, maxColorValue = 255)
+
+
+my_edge_theme <- theme(panel.background = element_rect(fill = edge_deep_charcoal20),
+                       panel.border = element_rect(linetype = "solid", fill = NA),
+                       panel.grid = element_line(colour = edge_deep_charcoal), 
+                       plot.background = element_rect(fill = edge_deep_charcoal, colour = NA,size = 2),
+                       text = element_text(family = "Arial", size=10, colour=edge_pure_green), 
+                       title = element_text(family="Arial", size=15, colour=edge_pure_green),
+                       axis.text= element_text(family="Arial", colour=edge_pure_green),
+                       legend.background = element_rect(fill = "transparent",colour = NA), 
+                       legend.key = element_rect(colour = edge_deep_charcoal50, fill = edge_pure_green))
+
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point(color = edge_pure_green) +
+  labs(title = "Engine size vs Highway fuel economy",
+       x = "Engine displacement (L)",
+       y = "Highway fuel economy (mpg)",
+       colour = "Car type") + 
+  my_edge_theme
+```
+
+![](Tutorial_3_files/figure-markdown_github/Edge_theme-1.png)
+
+
+
+
 
 -   For more information and examples on how to use `ggplot2` to plot data, read the [data visualisation](http://r4ds.had.co.nz/data-visualisation.html) chapter from the [R for Data Science](http://r4ds.had.co.nz/index.html) book.
