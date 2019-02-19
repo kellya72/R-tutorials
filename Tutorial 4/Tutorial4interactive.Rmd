@@ -1,0 +1,376 @@
+---
+title: "Tutorial 4: Data Transformation"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+knitr::opts_chunk$set(echo = FALSE)
+
+pulseData <- read.table("pulse.txt", header = TRUE)
+fastFoodData <- read_csv("fastfood_calories.csv")
+oliveData <- load("olive.Rdata")
+
+missingData <- pulseData[!complete.cases(pulseData),]
+cleanPulseData <- na.omit(pulseData)
+```
+
+
+## Introduction
+
+
+This weeks tutorial will show you how to read in datasets to R, save datasets as files and deal with missing data. We will also look at the `filter()`, `arrange()` and `select()` functions which are useful for data transformation.
+
+
+-   Download the ['Olive.Rdata'](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%204/olive.Rdata?raw=true), ['pulse.txt'](https://raw.githubusercontent.com/kellya72/R-tutorials/master/Tutorial%204/pulse.txt) and ['fastfood\_calories.csv'](https://raw.githubusercontent.com/kellya72/R-tutorials/master/Tutorial%204/pulse.txt) files. Save them to the same folder as this document
+
+
+### Loading Datasets
+
+
+-   The function used to read in the individual files depends on the file type.
+    -   `read.table()` can be used for reading in most file types which contain data in a table format. The function takes the form `read.table(file, header= FALSE, sep= "")` where `file` is the name of the file. The default value for `header` is `FALSE`, which means that the function assumes the data read in does not have a heading. If this is not the case simply set `header=TRUE`. The `sep` parameter assumes that the data is seperated in the file by a space, tab or new line. However, if the data is seperated by a `;` for example, set `sep= ";"`.
+    
+    -   `read.csv()` is used for reading in csv files. The function takes the form `read.csv(file, header= TRUE, sep=",")`. Note that `read.csv()` assumes the data has a heading, however you can change this by setting `header= FALSE`. Also it assumes that the data is seperated by a `,` but this parameter can also be changed.
+
+    -   `load()` is used for reading in `.Rdata` files.
+
+#### Tidyverse alternatives
+
+- `read_csv()` reads comma delimited files, `read_csv2()` reads semicolon separated files (common in countries where , is used as the decimal place), `read_tsv()` reads tab delimited files, and `read_delim()` reads in files with any delimiter.
+
+- `read_fwf()` reads fixed width files. You can specify fields either by their widths with `fwf_widths()` or their position with `fwf_positions()`. `read_table()` reads a common variation of fixed width files where columns are separated by white space.
+
+    
+```{r readtable, exercise= TRUE, exercise.eval= FALSE}
+pulseData <- read_table("https://raw.githubusercontent.com/kellya72/R-tutorials/master/Tutorial%204/pulse.txt")
+pulseData 
+```
+
+
+
+```{r readcsv, exercise= TRUE, exercise.eval= FALSE}
+fastFoodData <- read.csv("https://raw.githubusercontent.com/kellya72/R-tutorials/master/Tutorial%204/fastfood_calories.csv", stringsAsFactors = FALSE)
+fastFoodData
+```
+
+
+
+```{r ex-load, exercise= TRUE, exercise.eval= FALSE}
+oliveData <- load("olive.Rdata")
+oliveData 
+```
+
+
+
+
+-   When reading in data, it is useful to assign names to the input as then the datasets can easily be included in other functions.
+
+-   As the files were saved in the working directory **R Tutorials**, only the file name was needed in the function. However, if the file was saved in another location, the full filepath would need to be included e.g. `read.table("user/downloads/pulse.txt")`. You must use forward slashes in the file path, R will return an error if backwards slashes are used.
+
+
+
+### Saving Datasets
+
+-   It is also possible to save datasets created or worked on in R as files.
+
+-   The `read.table()` function can be used to do this. The function takes the form `read.table(x, file, sep = " ")` where `x` is the name of the dataset in R and `file` is name of the file you wish to create. The `sep` parameter once again is the method by which each row of data is seperated in the resulting file, with the default seperator set to a space.
+
+-   Try running the following code:
+
+```{r ex-save, exercise= TRUE, exercise.eval= FALSE}
+write.table(pulseData, "savedPulse.txt")
+```
+
+
+
+
+
+
+## Missing Data
+
+
+-   Datasets often can contain missing data.
+
+-   The `complete.cases()` function is used to identify the rows of data which are complete i.e. do not contain missing data.
+
+-   Sometimes it is helpful to take a closer look at cases with missing data as opposed to just deleting them.
+
+-   Run the following code to find any missing data in the `pulseData` dataframe and save them in a new dataframe called `missingData`.
+
+
+```{r ex-pulse-complete, exercise= TRUE, exercise.eval= FALSE, }
+missingData <- pulseData[!complete.cases(pulseData),]
+```
+
+
+-   The `!` in R is a negative operator, i.e. the code above is searching for cases that are **not** complete.
+
+-   The method of accessing the missing rows of data is the same principle that was used previously when selecting rows in matrices (`matrix[rowsOfInterest, columnsOfInterest]`).
+
+### Analysing the Missing Data
+
+-   The `summary()` function is useful for quickly analysing a dataset.
+
+```{r ex-pulse-summary, exercise= TRUE, exercise.eval= FALSE, }
+summary(missingData)
+```
+
+-   In RStudio, to access an entire dataset, use the `View()` function.
+
+
+### Removing Missing Data
+
+-   After analysing the cases which contain missing elements, sometimes we then wish to remove them from our original dataset.
+
+**Exercise 2: Use the `complete.cases()` function to create a new dataframe called `cleanPulseData` which contains no missing data.**
+
+-   An alternative method of removing missing data is to use the `na.omit()` function:
+
+```{r ex-pulse-naomit, exercise= TRUE, exercise.eval= FALSE, }
+cleanPulseData <- na.omit(pulseData)
+```
+
+
+
+
+
+
+## Data Tansformation
+
+-   The `filter()`, `arrange()` and `select()` functions are from the `dplyr` package which is a member of the `tidyverse` packages.
+
+### `filter()`
+
+-   The `filter()` function allows you to easily subset observations based on their values.
+
+-   The data to be subsetted is first specified and the subsequent arguments are the expressions that filter the data frame.
+
+-   For example, you may wish to create a subset of cases from `cleanPulseData` containing only individuals who smoke and weigh over 160.
+
+```{r pulse-filter, exercise= TRUE, exercise.eval= FALSE}
+smokersOver160 <- filter(cleanPulseData, 
+                         RestingPulse == "Low", 
+                         Smokes== "Yes", 
+                         Weight> 160)
+head(smokersOver160)
+```
+
+
+**Exercise 3: Create a subset from `cleanPulseData` which contains individuals with a low resting pulse who do not smoke and weight less than 180. Name the subset `lowRateNonSmokers`.**
+```{r ex-pulse-filter, exercise= TRUE, exercise.eval= FALSE, }
+
+```
+```{r ex-pulse-filter-solution}
+lowRateNonSmokers <- filter(cleanPulseData, 
+                            Smokes == "No", 
+                            Weight < 180)
+lowRateNonSmokers[1:10,]
+```
+
+
+
+**Exercise 4: Create a subset containing individuals with a weight that is less than or equal to 170.**
+```{r ex-pulse-subset, exercise= TRUE, exercise.eval= FALSE, }
+
+```
+```{r ex-pulse-subset-solution}
+lessThanOrEqualTo170 <- filter(cleanPulseData, Weight <= 170)
+lessThanOrEqualTo170[1:10,]
+```
+
+
+### `arrange()`
+
+-   The `arrange()` function sorts and orders the contents of a dataframe.
+
+```{r pulse-arrange1, exercise= TRUE, exercise.eval= FALSE}
+weightOrder <- arrange(cleanPulseData, Weight)
+weightOrder[1:5,]
+```
+
+
+-   The data frame is arranged in ascending order by default. However, you can sort the data by descending order using the following code:
+
+```{r pulse-arrange2, exercise= TRUE, exercise.eval= FALSE}
+weightOrderDesc <- arrange(cleanPulseData, desc(Weight))
+weightOrderDesc[1:5,]
+```
+
+-   It is also possible to include more than one column name in the `arrange()` function.
+
+```{r pulse-arrange3, exercise= TRUE, exercise.eval= FALSE}
+smokesAndPulseOrder <- arrange(cleanPulseData,Smokes, RestingPulse)
+smokesAndPulseOrder[1:5,]
+```
+
+
+**Exercise 5: Run the above function again but this time input `RestingPulse` into the function before `Smokes`. What effect does this have on the resulting dataset.**
+```{r ex-pulse-arrange, exercise= TRUE, exercise.eval= FALSE}
+
+```
+```{r ex-pulse-arrange-solution}
+pulseAndSmokesOrder <- arrange(cleanPulseData, RestingPulse, Smokes)
+pulseAndSmokesOrder[1:10,]
+```
+
+
+### `select()`
+
+-   The `select()` function allows you select only the variables you are interested in from a data frame.
+
+-   For example, some datasets may contain hundreds of variables but you may only wish to analyse a few of them.
+
+-   `fastFoodData` has 18 variables for each of its 515 observations. The code below shows how the `select()` function can be used to create a new dataset with less variables.
+
+```{r pulse-select, exercise= TRUE, exercise.eval= FALSE}
+fastFoodDataSimplified <- select(fastFoodData, 
+                                 restaurant, 
+                                 item, 
+                                 calories)
+```
+
+**Exercise 6: Use the `select()` function to create a data frame called `fastFoodNutrition` which contains the variables `restaurant`, `item`, `calories`, `total_fat`, `sugar` and `protein`.**
+```{r ex-pulse-select, exercise= TRUE, exercise.eval= FALSE}
+
+```
+```{r ex-pulse-select-solution}
+fastFoodNutrition <- select(fastFoodData, 
+                            restaurant, 
+                            item, 
+                            calories, 
+                            total_fat, 
+                            sugar, 
+                            protein)
+fastFoodNutrition[1:5,]
+```
+
+
+
+
+
+
+
+## More Transformations
+
+This week's tutorial will intoduce more helpful functions for data transformation such as `mutate()`, `transmutate()`, `groupBy()` and `ungroup()`. These functions will then be used in conjunction with functions from previous weeks to create graphs using the `ggplot` package.
+
+Getting Started
+---------------
+
+-   Open up a new R Script in R Studio.
+
+-   Set the working directory to **R Tutorials**.
+
+-   Load the `tidyverse` package.
+
+-   Download the [**player\_data.csv**](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%205/player_data.csv) file from the **Tutorial 5** folder.
+
+-   Read the dataset into R, assigning it the name `playerData`.
+
+The `mutate()` and `transmute()` Functions
+------------------------------------------
+
+### `mutate()`
+
+-   The `mutate()` function allows you create new columns (variables) that are functions of existing columns and adds them to the dataframe.
+
+-   For example, the `playerData` dataset has two variables `year_start` and `year_end` which represent the year a player started their career and the year they stopped playing professionally. It is therefore possible to add a new column `years_active` to the existing dataset by doing the following:
+
+``` r
+playerData <- mutate(playerData, years_active= year_end - year_start)
+```
+
+-   It is possible to create multiple new variables within the same `mutate()` function using the following format: `mutate(data, newVariable1, newVariable2, newVariable3, ...)`.
+
+### `transmute()`
+
+-   If you only wish to keep the new variables you have created, you can do so using the `transmute()` function as shown below:
+
+``` r
+transmute(playerData, years_active= year_end - year_start)
+```
+
+**Exercise 1: The `nycflights13` package contains the `flights` dataset. Install and load the package to access the dataset. Add a new variable to the dataset called `kmPerMinute` by dividing the `distance` variable by the `air_time` variable.**
+
+`group_by()` and `ungroup()`
+----------------------------
+
+### `group_by()`
+
+-   The `group_by()` function groups entries in a dataset by given variables.
+
+-   This is particularly useful when used in conjunction with the `summarise()` function.
+
+-   Try running the following code which groups the players in the dataset by their college and then finds the average number of years players from different colleges are active.
+
+``` r
+byCollege <- group_by(playerData, college)
+summarise(byCollege, averageYearsActive= mean(years_active))
+```
+
+    ## # A tibble: 474 x 2
+    ##    college                        averageYearsActive
+    ##    <fct>                                       <dbl>
+    ##  1 ""                                           4.54
+    ##  2 Acadia University                            0   
+    ##  3 Alabama - Huntsville                         0   
+    ##  4 Alabama A&M University                       0   
+    ##  5 Alabama State University                     1   
+    ##  6 Albany State University                      8.6 
+    ##  7 Alcorn State University                      6.25
+    ##  8 Alliance College                             0   
+    ##  9 American International College              10   
+    ## 10 American University                         14   
+    ## # ... with 464 more rows
+
+**Exercise 2: Group the dataset using the `year_start` variable and then find the maximum `year_end` associated with each starting year.**
+
+**Exercise 3: Group the `flights` dataset by `dest` and `carrier` then find the average distance for each grouping.**
+
+### `ungroup()`
+
+-   If you wish to remove a grouping, you can do so simply by using the `ungroup()` function as follows:
+
+``` r
+ungroup(byCollege)
+```
+
+Data Visualisation
+------------------
+
+-   Before plotting a graph it is often useful to employ some data manipulation techniques on a dataframe.
+
+-   This allows us to create plots that are more specific which can aid us in data analysis.
+
+-   Before continuing on it might be helpful to look over **Tutorial 3** to recap on plotting using `ggplot`.
+
+-   Some of the following functions used have been previously demonstrated in **Tutorial 4**.
+
+-   This section should help to consolidate what you have already learned while also incorporating the new techniques from this week.
+
+### Example 1
+
+Look at the following code. Do you understand what the functions are doing and what the resulting graph is representing?
+
+``` r
+playersAfter1990 <- filter(playerData, year_start>1990)
+playersAfter1990 <- group_by(playersAfter1990, year_start)
+averageYearsActive <- summarise(playersAfter1990, meanYearsActive = mean(years_active))
+
+ggplot(data = averageYearsActive) + 
+  geom_point(mapping = aes(x = year_start, y = meanYearsActive))
+```
+
+![](Tutorial_5_files/figure-markdown_github/unnamed-chunk-5-1.png)
+
+**Exercise 4: Using `playerData` create a boxplot comparing a players position and their weight. Note: In some cases players have switched positions and therefore their position values are equal to `G-F`, `F-C` etc. Do not alter the values, simply consider `G-F` as a seperate group to `G` and `F`.**
+
+**Exercise 5: Create a bar plot using the positions variable but only for players of height of 6-8. Colour the bars based on the position.**
+
+**Exercise 6: Group `playerData` by `college` and find the minimum `year_start` for each college. Create a bar plot of the number of colleges for each minimum start year up to and including 1955.**
+
+For more information and examples on the functions used in this weeks tutorial and how to incorporate them in graphs, read the [data transformation](https://r4ds.had.co.nz/transform.html) and the [exploratory data analysis](https://r4ds.had.co.nz/exploratory-data-analysis.html) chapters from the [R for Data Science](http://r4ds.had.co.nz/index.html) book.
+
