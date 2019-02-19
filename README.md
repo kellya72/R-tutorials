@@ -1,15 +1,11 @@
 # R-tutorials
 
 ## Week 1: An Introduction to R
-- [Tutorial 1](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%201/Tutorial_1.md)
-
-## Week 2: Vectors and Matrices
-- [Tutorial 2](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%202/Tutorial_2.md)
-- [Tutorial 2 Solutions](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%202/Tutorial_2_Solutions.md)
+- [Tutorial 1](/Tutorial_01/Tutorial_1.md)
 
 ## Week 3: Data Visualisation
-- [Tutorial 3](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%203/Tutorial_3.md)
-- [Tutorial 3 Solutions](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%203/Tutorial_3_solutions.md)
+- [Tutorial 3](/Tutorial_03/Tutorial_3.md)
+- [Tutorial 3 Solutions](/Tutorial_03/Tutorial_3_solutions.R)
 
 ## Week 4: Data Transformation
 - [Tutorial 4](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%204/Tutorial_4.md)
