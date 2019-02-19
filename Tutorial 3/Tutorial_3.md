@@ -323,7 +323,8 @@ ggplot(data = mpg, mapping = aes(x = drv, y = cty, fill= drv)) +
 
 ``` r
 ggplot(data = mpg) + 
-  geom_boxplot(aes(x = class, y = hwy))
+  geom_boxplot(aes(x = class, y = hwy)) +
+  coord_flip()
 
 ```  
 ![](Tutorial_3_files/figure-markdown_github/coord-1.png)
