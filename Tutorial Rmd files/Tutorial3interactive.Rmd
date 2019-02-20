@@ -526,7 +526,7 @@ all_county  # explore data
 ```
 
 
-- We can creates a heatmap coloured according to *Income*.
+- We can create a heatmap coloured according to *Income*.
 - Try and change *Income* to a different variable such as *Unemployment* or *MeanCommute*.  
     - You may need to change the `labels` argument inside the `scales_fill_distiller`.
     - See the solution for an example.
