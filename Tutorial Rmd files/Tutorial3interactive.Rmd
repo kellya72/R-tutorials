@@ -68,7 +68,7 @@ mpg
 
 ## Scatterplots  {data-progressive=TRUE}
 
-- We will start by producing a basic scatterplot of the `disp` (engine displacement in litres) and `cty` (city miles per gallon) variables. 
+- We will start by producing a basic scatterplot of the `displ` (engine displacement in litres) and `cty` (city miles per gallon) variables. 
 
 ```{r firstScatterplot, exercise = TRUE, exercise.eval = FALSE}
 ggplot(data = mpg) + 
