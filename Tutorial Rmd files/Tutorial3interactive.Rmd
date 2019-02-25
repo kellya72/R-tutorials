@@ -636,13 +636,13 @@ states = map_data("state")
 
 turbine_data <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-11-06/us_wind.csv", na=c("n/a", "-9999", "missing"))
 
-animation_data <- turbine_data %>% 
+turbine_data <- turbine_data %>% 
   filter(!is.na(p_year))
 ```
 
 - The final animation looks at [US Wind Turbine Data](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-06)
 
-```{r wind-turbines-setup ,exercise=TRUE, exercise.setup = "wind-turbines-prep", exercise.timelimit=60, exercise.lines=9, warning=FALSE, error=FALSE, message=FALSE}
+```{r wind-turbines-setup ,exercise=TRUE, exercise.timelimit=60, exercise.lines=9, warning=FALSE, error=FALSE, message=FALSE}
 states = map_data("state") 
 
 turbine_data <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-11-06/us_wind.csv", na=c("n/a", "-9999", "missing"))
