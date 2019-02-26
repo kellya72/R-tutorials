@@ -72,7 +72,7 @@ mpg
 
 ## Scatterplots  {data-progressive=TRUE}
 
-- We will start by producing a basic scatterplot of the `disp` (engine displacement in litres) and `cty` (city miles per gallon) variables. 
+- We will start by producing a basic scatterplot of the `displ` (engine displacement in litres) and `cty` (city miles per gallon) variables. 
 
 ```{r firstScatterplot, exercise = TRUE, exercise.eval = FALSE}
 ggplot(data = mpg) + 
@@ -530,7 +530,7 @@ all_county  # explore data
 ```
 
 
-- We can creates a heatmap coloured according to *Income*.
+- We can create a heatmap coloured according to *Income*.
 - Try and change *Income* to a different variable such as *Unemployment* or *MeanCommute*.  
     - You may need to change the `labels` argument inside the `scales_fill_distiller`.
     - See the solution for an example.
@@ -640,18 +640,18 @@ states = map_data("state")
 
 turbine_data <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-11-06/us_wind.csv", na=c("n/a", "-9999", "missing"))
 
-animation_data <- turbine_data %>% 
+turbine_data <- turbine_data %>% 
   filter(!is.na(p_year))
 ```
 
 - The final animation looks at [US Wind Turbine Data](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-06)
 
-```{r wind-turbines-setup ,exercise=TRUE, exercise.setup = "wind-turbines-prep", exercise.timelimit=60, exercise.lines=9, warning=FALSE, error=FALSE, message=FALSE}
+```{r wind-turbines-setup ,exercise=TRUE, exercise.timelimit=60, exercise.lines=9, warning=FALSE, error=FALSE, message=FALSE}
 states = map_data("state") 
 
-raw_data <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-11-06/us_wind.csv", na=c("n/a", "-9999", "missing"))
+turbine_data <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-11-06/us_wind.csv", na=c("n/a", "-9999", "missing"))
 
-turbine_data <- raw_data %>% 
+turbine_data <- turbine_data %>% 
   filter(!is.na(p_year))  # remove NAs
 
 turbine_data
@@ -678,7 +678,7 @@ location_animation <- ggplot() +
   transition_time(p_year) + 
   shadow_mark(colour ='blue')  # animations settings, shdow_mark sticks points onto the map
 
-animate(location_animation, nframes = length(unique(raw_data$p_year)), fps = 1, width=800, height=800)  # create animation
+animate(location_animation, nframes = length(unique(turbine_data$p_year)), fps = 1, width=800, height=800)  # create animation
 
 ```
 
