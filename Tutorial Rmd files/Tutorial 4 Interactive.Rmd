@@ -22,7 +22,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 pulseData <- read.table("https://raw.githubusercontent.com/kellya72/R-tutorials/master/Tutorial%204/pulse.txt", header = TRUE)
 fastFoodData <- read.csv("https://raw.githubusercontent.com/kellya72/R-tutorials/master/Tutorial%204/fastfood_calories.csv", header = TRUE)
-oliveData <- load(url("https://github.com/kellya72/R-tutorials/blob/master/Tutorial%204/olive.Rdata?raw=true"))
+load(url("https://github.com/kellya72/R-tutorials/blob/master/Tutorial%204/olive.Rdata?raw=true"))
 playerData <- read.csv("https://raw.githubusercontent.com/kellya72/R-tutorials/master/Tutorial%205/player_data.csv")
 
 missingData <- filter(pulseData, !complete.cases(pulseData))
@@ -67,8 +67,8 @@ fastFoodData
 
 
 ```{r ex-load, exercise= TRUE, exercise.eval= FALSE}
-oliveData <- load(url("https://github.com/kellya72/R-tutorials/blob/master/Tutorial%204/olive.Rdata?raw=true"))
-oliveData 
+load(url("https://github.com/kellya72/R-tutorials/blob/master/Tutorial%204/olive.Rdata?raw=true"))
+olive
 ```
 
 
@@ -106,7 +106,10 @@ oliveData
 
 
 ```{r ex-pulse-complete, exercise= TRUE, exercise.eval= FALSE, }
-missingData <- filter(pulseData, !complete.cases(pulseData))
+missingData <- filter(pulseData, complete.cases(pulseData))
+
+nrow(pulseData)
+nrow(missingData)
 ```
 
 

@@ -6,8 +6,7 @@ runtime: shiny_prerendered
 
 ```{r install packages, include=FALSE, eval=FALSE}
 # In order to run this document you need to install a package
-# This can be done using the command below
-# Click the play button at the top right of this box to run this 'chunk' of code
+# This can be done by copying and pasting the command below into the console
 
 install.packages("nycflights13")
 
