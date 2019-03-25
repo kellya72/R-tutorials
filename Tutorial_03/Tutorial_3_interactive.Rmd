@@ -4,6 +4,16 @@ output: learnr::tutorial
 runtime: shiny_prerendered
 ---
 
+```{r install packages, include=FALSE, eval=FALSE}
+# In order to run this document you need to install a package
+# This can be done by copying and pasting the command below into the console
+
+install.packages("nycflights13")
+
+# Once installed, click the Run Document at the top of this window to begin the tutorial
+```
+
+
 ```{r setup, include=FALSE}
 library(learnr)
 library(tidyverse)
@@ -116,7 +126,7 @@ summary(missingData)
 
 -   After analysing the cases which contain missing elements, sometimes we then wish to remove them from our original dataset.
 
-**Exercise 2: Use the `complete.cases()` function to create a new dataframe called `cleanPulseData` which contains no missing data.**
+**Exercise: Use the `complete.cases()` function to create a new dataframe called `cleanPulseData` which contains no missing data.**
 
 ```{r ex2-pulse, exercise= TRUE, exercise.eval= FALSE, }
 cleanPulseData <- pulseData
@@ -165,7 +175,7 @@ smokersOver160
 ```
 
 
-**Exercise 3: Create a subset from `cleanPulseData` which contains individuals with a low resting pulse who do not smoke and weight less than 180. Name the subset `lowRateNonSmokers`.**
+**Exercise: Create a subset from `cleanPulseData` which contains individuals with a low resting pulse who do not smoke and weight less than 180. Name the subset `lowRateNonSmokers`.**
 ```{r ex-pulse-filter, exercise= TRUE, exercise.eval= FALSE, }
 
 ```
@@ -178,7 +188,7 @@ lowRateNonSmokers
 
 
 
-**Exercise 4: Create a subset containing individuals with a weight that is less than or equal to 170.**
+**Exercise: Create a subset containing individuals with a weight that is less than or equal to 170.**
 ```{r ex-pulse-subset, exercise= TRUE, exercise.eval= FALSE, }
 
 ```
@@ -214,7 +224,7 @@ smokesAndPulseOrder
 ```
 
 
-**Exercise 5: Run the above function again but this time input `RestingPulse` into the function before `Smokes`. What effect does this have on the resulting dataset.**
+**Exercise: Run the above function again but this time input `RestingPulse` into the function before `Smokes`. What effect does this have on the resulting dataset.**
 ```{r ex-pulse-arrange, exercise= TRUE, exercise.eval= FALSE}
 
 ```
@@ -240,7 +250,7 @@ fastFoodDataSimplified <- select(fastFoodData,
 fastFoodDataSimplified
 ```
 
-**Exercise 6: Use the `select()` function to create a data frame called `fastFoodNutrition` which contains the variables `restaurant`, `item`, `calories`, `total_fat`, `sugar` and `protein`.**
+**Exercise: Use the `select()` function to create a data frame called `fastFoodNutrition` which contains the variables `restaurant`, `item`, `calories`, `total_fat`, `sugar` and `protein`.**
 ```{r ex-pulse-select, exercise= TRUE, exercise.eval= FALSE}
 
 ```
@@ -317,7 +327,7 @@ flights
 
 <br>
 
-**Exercise 7: Add a new variable to the flights dataset called `kmPerMinute` by dividing the `distance` variable by the `air_time` variable.**
+**Exercise: Add a new variable to the flights dataset called `kmPerMinute` by dividing the `distance` variable by the `air_time` variable.**
 
 ```{r ex-flights, exercise= TRUE, exercise.eval= FALSE}
 flights
@@ -353,7 +363,7 @@ summarise(byCollege, averageYearsActive = mean(years_active))
 ```
 
 
-**Exercise 8: Group the dataset using the `year_start` variable and then find the maximum `year_end` associated with each starting year.**
+**Exercise: Group the dataset using the `year_start` variable and then find the maximum `year_end` associated with each starting year.**
 
 ```{r ex8-player, exercise= TRUE, exercise.eval= FALSE}
 byStartYear <- group_by(playerData)
@@ -368,7 +378,7 @@ summarise(byStartYear, maxYearEnd = max(year_end))
 ```
 
 
-**Exercise 9: Group the `flights` dataset by `dest` and `carrier` then find the average distance for each grouping.**
+**Exercise: Group the `flights` dataset by `dest` and `carrier` then find the average distance for each grouping.**
 
 ```{r ex9-player, exercise= TRUE, exercise.eval= FALSE}
 byDestAndCarrier <- group_by(flights)
@@ -459,8 +469,8 @@ ggplot(data = delay, mapping = aes(x = dist, y = delay)) +
 
 <br>
 
-In exercise 9 we grouped the `flights` dataset by `dest` and `carrier`, and then found the average distance for each grouping.  
-**Exercise 10: Rewrite the code using the `%>%` operator.**
+In the last exercise we grouped the `flights` dataset by `dest` and `carrier`, and then found the average distance for each grouping.  
+**Exercise: Rewrite the code using the `%>%` operator.**
 ```{r ex10-player, exercise= TRUE, exercise.eval= FALSE}
 byDestAndCarrier <- group_by(flights, dest, carrier)
 summarise(byDestAndCarrier, averageDistance = mean(distance))
@@ -478,11 +488,9 @@ flights %>%
 
 -   This allows us to create plots that are more specific which can aid us in data analysis.
 
--   Before continuing on it might be helpful to look over **Tutorial 3** to recap on plotting using `ggplot`.
-
 -   This section should help to consolidate what you have already learned while also incorporating the new techniques from this week.
 
-### Example 1
+### Example
 
 Look at the following code. Do you understand what the functions are doing and what the resulting graph is representing?
 
@@ -506,7 +514,7 @@ ggplot(data = averageYearsActive) +
 ```
 
 
-**Exercise 11: Using `playerData` create a boxplot comparing a players position and their weight. Note: In some cases players have switched positions and therefore their position values are equal to `G-F`, `F-C` etc. Do not alter the values, simply consider `G-F` as a seperate group to `G` and `F`.**
+**Exercise: Using `playerData` create a boxplot comparing a players position and their weight. Note: In some cases players have switched positions and therefore their position values are equal to `G-F`, `F-C` etc. Do not alter the values, simply consider `G-F` as a seperate group to `G` and `F`.**
 
 ```{r ex11, exercise= TRUE, exercise.eval= FALSE}
 ```
@@ -516,7 +524,7 @@ ggplot(data = playerData, mapping = aes(x= position, y = weight)) +
 ```
 
 
-**Exercise 12: Create a bar plot using the positions variable but only for players of height of 6-8. Colour the bars based on the position.**
+**Exercise: Create a bar plot using the positions variable but only for players of height of 6-8. Colour the bars based on the position.**
 
 ```{r ex12, exercise= TRUE, exercise.eval= FALSE}
 ```
@@ -529,7 +537,7 @@ playerData %>%
 ```
 
 
-**Exercise 13: Group `playerData` by `college` and find the minimum `year_start` for each college. Create a bar plot of the number of colleges for each minimum start year up to and including 1955.**
+**Exercise: Group `playerData` by `college` and find the minimum `year_start` for each college. Create a bar plot of the number of colleges for each minimum start year up to and including 1955.**
 
 ```{r ex13, exercise= TRUE, exercise.eval= FALSE}
 ```
