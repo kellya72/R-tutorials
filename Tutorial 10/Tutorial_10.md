@@ -24,7 +24,7 @@ Getting Started
 
 -   At the top of the R Markdown document you just created you will notice the following lines of code:
 
-![](images/yaml.png)
+![](images/yaml.PNG)
 
 -   This is known as the YAML header.
 
@@ -34,7 +34,7 @@ Getting Started
 
 -   You will also notice the following code chunk:
 
-![](images/global%20chunk.png)
+![](images/global.PNG)
 
 -   The `knitr::opts_chunk$set()` function means that any format specified between the brackets will automatically apply to all code chunks in the document. Any defaults set can be overidden in the individual code chunks in the document.
 
@@ -48,7 +48,7 @@ Getting Started
 
 -   To insert a new code chunk select the following button which can be found at the top of your R Script box:
 
-![](images/insert%20r%20code.png)
+![](images/insertCode.PNG)
 
 **Exercise 1: Read through the writing code information already contained in the R Markdown document. How would you ensure that only the output of a code chunk appeared in the final document and not the code chunk itself? Edit the global options so that code chunks are automatically hidden in the final document.**
 
@@ -56,7 +56,7 @@ Getting Started
 
 -   To generate a report from an R Markdown file you simply need to click the knit button at the top of the R Script box:
 
-![](images/knit.png)
+![](images/knit.PNG)
 
 -   A preview of the document will automatically open which shows how the final document looks.
 
