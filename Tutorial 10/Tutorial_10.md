@@ -14,7 +14,7 @@ Getting Started
 
 -   The following box will appear:
 
-![](images/rmarkStart.png)
+![](images/rmarkStart.PNG)
 
 -   Enter **First R Markdown Document** into the title box and your name in the author box.
 
