@@ -9,7 +9,7 @@
 
 ## Week 3: Data Transformation
 - [Tutorial 3](Tutorial_03/Tutorial_3.md)
-- [Tutorial 3 Solutions](Tutorial_03/Tutorial_3_Solutions.md)
+- [Tutorial 3 Solutions](Tutorial_03/Tutorial_3_Solutions.R)
 - Datasets:
   - [olive.Rdata](Tutorial_03/olive.Rdata)
   - [pulse.txt](Tutorial_03/pulse.txt)
@@ -17,7 +17,7 @@
   - [player_data.csv](Tutorial_03/player_data.csv)
 
 ## Week 4: Introduction to R Markdown
-- [Tutorial 4](Tutorial_04/Intro_to_Rmarkdow.md)
+- [Tutorial 4](Tutorial_04/Intro_to_Rmarkdown.md)
 
 
 ## Week 6: Dates and Times
