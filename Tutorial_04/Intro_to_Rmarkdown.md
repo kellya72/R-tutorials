@@ -44,7 +44,7 @@ install.packages("rmarkdown")`
 ``` r
 ---
 title: "HTML_example"
-author: "Aidan Boland"
+author: "Jane Doe"
 date: "3/25/2019"
 output: html_document
 ---
@@ -213,7 +213,7 @@ or for html files
 
 ### Links
 
-Normal hyperlinks can be added using
+URL hyperlinks can be added using
 
 ``` markdown
 [click here](www.google.com)
@@ -254,4 +254,17 @@ Normal hyperlinks can be added using
 ``` r
 install.packages("tinytex")
 tinytex::install_tinytex()  # install TinyTeX
+```
+
+The output type in the YAML header can then be changed to
+`pdf_document`. Alternatively, you can select pdf from the dropdown box
+beside the Knit button.
+
+``` r
+---
+title: "Untitled"
+author: "Aidan Boland"
+date: "3/28/2019"
+output: pdf_document
+---
 ```
