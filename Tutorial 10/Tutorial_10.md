@@ -1,4 +1,4 @@
-Tutorial 10: R Markdown
+  Tutorial 10: R Markdown
 ================
 
 This tutorial will provide an introduction to R Markdown. R Markdown is an extension in RStudio which allows you to create word documents, pdfs and presentations within RStudio. It allows you to seamlessly incorporate data analysis and visualistions created in R into a professionally looking report.
@@ -62,7 +62,7 @@ Getting Started
 
 -   If you decide you want to make changes to the document you can then do so in RStudio and the final document will be updated when the knit button is selected again.
 
--   The actual document created can be found in the working directory selected.
+-   The actual document created can be found in the working directory where the file is saved.
 
 **Exercise 2: Knit *First R Markdown Document* as a word document.**
 

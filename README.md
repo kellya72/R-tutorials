@@ -16,7 +16,9 @@
   - [fastfood_calories.csv](Tutorial_03/fastfood_calories.csv)
   - [player_data.csv](Tutorial_03/player_data.csv)
 
-## Week 6: Data Cleaning
+## Week 4: Introduction to R Markdown
+
+## Week 6: Dates and Times
 - [Tutorial 6](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%206/Tutorial_6.md)
 - [Tutorial 6 Solutions](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%206/Tutorial_6_Solutions.md)
 - Dataset:
