@@ -111,7 +111,7 @@ automatically hidden in the final document.**
   - The actual document created can be found in the working directory
     where the file is saved.
 
-**Exercise 2: Knit First R Markdown Document as a word document.**
+**Exercise 2: Knit First R Markdown Document as a html document.**
 
 # Markdown Syntax
 
@@ -185,6 +185,8 @@ Ordered List:
     1.  Item 2a
     2.  Item 2b
 
+**Exercise 3: Add an ordered list to your document.**
+
 <br>
 
 ### Figures
@@ -225,10 +227,12 @@ URL hyperlinks can be added using
 
 ### Cheatsheets
 
-  - [Rmarkdown
+  - This [R Markdown
     cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
-  - [Rmarkdown
+    is a concise document outlining the basics of R Markdown
+  - The [R Markdown
     reference](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
+    document is a more detailed version of the cheatsheet.
 
 ### In-depth references
 

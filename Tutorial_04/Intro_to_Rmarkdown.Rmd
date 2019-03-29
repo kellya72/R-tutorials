@@ -88,7 +88,7 @@ knitr::opts_chunk$set(echo = TRUE)
 -   The actual document created can be found in the working directory where the file is saved.
 
 
-**Exercise 2: Knit First R Markdown Document as a word document.**
+**Exercise 2: Knit First R Markdown Document as a html document.**
 
 
 
@@ -166,6 +166,9 @@ Ordered List:
     i. Item 2a
     i. Item 2b
 
+
+**Exercise 3: Add an ordered list to your document.**
+
 <br>
 
 ### Figures
@@ -198,8 +201,8 @@ URL hyperlinks can be added using
 ## References 
 
 ### Cheatsheets
-  - [Rmarkdown cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
-  - [Rmarkdown reference](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
+  - This [R Markdown cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is a concise document outlining the basics of R Markdown
+  - The [R Markdown reference](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf) document is a more detailed version of the cheatsheet.
     
 ### In-depth references   
   - For more tips on getting started with R Markdown, the [R Markdown site](https://rmarkdown.rstudio.com) contains easy to follow tutorials on the basic use of the package.  
