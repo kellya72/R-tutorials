@@ -46,7 +46,7 @@
   - [alcohol_consumption.csv](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%209/alcohol_consumption.csv)
 
 ## Week 10: R Markdown
-- [Tutorial 10](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%2010/Tutorial%2010.Rmd)
+- [Tutorial 10](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%2010/Tutorial_10.Rmd)
 - Other Files:
   - [First R Markdown Word Document](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%2010/First_R_Markdown_Word_Document.docx)
   - [Exercise 3 Solution](https://github.com/kellya72/R-tutorials/blob/master/Tutorial%2010/Exercise%203%20Solution.Rmd)
